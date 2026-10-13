@@ -1,0 +1,32 @@
+Test run for C:\CNPMNC\RestaurantMvc.Tests\bin\Debug\net10.0\RestaurantMvc.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:01.41]   Discovering: RestaurantMvc.Tests
+[xUnit.net 00:00:01.70]   Discovered:  RestaurantMvc.Tests
+[xUnit.net 00:00:01.81]   Starting:    RestaurantMvc.Tests
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\CNPMNC\RestaurantMvc
+Đã khởi tạo RestaurantMvc_Test_3635ed1f494a4c0d9d5a29db7bf924f4. Giữ nguyên dữ liệu hiện có.
+  Passed RestaurantMvc.Tests.ApiTests.Existing_scrypt_accounts_and_logout(username: "admin", password: "admin123", role: "admin") [1 s]
+  Passed RestaurantMvc.Tests.ApiTests.Existing_scrypt_accounts_and_logout(username: "khach", password: "khach123", role: "customer") [206 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Existing_scrypt_accounts_and_logout(username: "nhanvien", password: "nhanvien123", role: "staff") [284 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Wrong_password_and_cross_origin_writes_are_rejected [130 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Private_endpoints_require_login(url: "/dashboard") [40 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Private_endpoints_require_login(url: "/reservations") [23 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Private_endpoints_require_login(url: "/invoices") [15 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Private_endpoints_require_login(url: "/sessions") [22 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Private_endpoints_require_login(url: "/orders") [11 ms]
+  Passed RestaurantMvc.Tests.ApiTests.Complete_restaurant_flow_concurrency_ownership_and_invoices [6 s]
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+[xUnit.net 00:00:20.53]   Finished:    RestaurantMvc.Tests
+  Passed RestaurantMvc.Tests.ApiTests.Razor_menu_and_assets_are_served [575 ms]
+
+Test Run Successful.
+Total tests: 11
+     Passed: 11
+ Total time: 23.5547 Seconds

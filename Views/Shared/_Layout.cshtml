@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#344c35">
+  <meta name="description" content="Bếp Nhà – Đặt bàn, gọi món và theo dõi bữa ăn của bạn.">
+  <title>@ViewData["Title"] · Bếp Nhà</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="~/styles.css" asp-append-version="true">
+  <script src="~/app.js" asp-append-version="true" type="module"></script>
+</head>
+<body>
+  <partial name="_Header" />
+  @RenderBody()
+  <partial name="_Footer" />
+  <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
