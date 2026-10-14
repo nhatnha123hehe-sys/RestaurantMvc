@@ -81,6 +81,7 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
     [Fact] public async Task Complete_restaurant_flow_concurrency_ownership_and_invoices()
     {
         using var c=await Login("khach","khach123"); using var staff=await Login("nhanvien","nhanvien123"); using var admin=await Login("admin","admin123"); using var other=fixture.Client();
+        await Expect(staff,"/dashboard",status:403); await Expect(admin,"/dashboard");
         var outsider=await Expect(other,"/auth/register","POST",new {username="other_test",password="test12345",name="Khách khác",phone="0909999999"},201);
         var customerId=Id(await Expect(c,"/auth/me"));
         await Expect(c,"/orders",status:403); await Expect(staff,"/menu","POST",new {name="Không có quyền"},403);

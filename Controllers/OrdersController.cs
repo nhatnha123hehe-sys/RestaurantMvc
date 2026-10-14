@@ -15,5 +15,5 @@ public class OrdersController(OrderService service) : ApiController
     [HttpGet("invoices")] public async Task<IActionResult> Invoices() => Ok(await service.Invoices(Current));
     [HttpGet("invoices/{id:int}")] public async Task<IActionResult> Detail(int id) => Ok(await service.Detail(Current,id));
     [HttpPost("invoices/{id:int}/pay"),Authorize(Roles="staff,admin")] public async Task<IActionResult> Pay(int id,PaymentInput b) => Ok(await service.Pay(Current,id,b));
-    [HttpGet("dashboard"),Authorize(Roles="staff,admin")] public async Task<IActionResult> Dashboard() => Ok(await service.Dashboard());
+    [HttpGet("dashboard"),Authorize(Roles="admin")] public async Task<IActionResult> Dashboard() => Ok(await service.Dashboard());
 }

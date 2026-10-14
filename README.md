@@ -16,6 +16,12 @@ Không cần Node.js, npm hoặc chạy bản Express để chạy website này.
 | Nhân viên | nhanvien | nhanvien123 |
 | Quản lý | admin | admin123 |
 
+Phân quyền khu vực quản lý:
+
+- **Nhân viên:** đặt bàn, nhận bàn, xử lý trạng thái đơn món, xem sơ đồ bàn và lập/thanh toán hóa đơn.
+- **Quản lý:** có toàn bộ quyền của nhân viên, thêm quyền xem **Dashboard & doanh thu**, quản lý món và CRUD công thức.
+- Dashboard/doanh thu được khóa ở backend với role `admin`; nhân viên không thể gọi trực tiếp API này.
+
 ## Đọc code trong Solution Explorer
 
 - `Program.cs`: cấu hình MVC, cookie đăng nhập, phân quyền, giới hạn đăng nhập, xử lý lỗi.
