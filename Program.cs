@@ -15,6 +15,7 @@ builder.Services.AddScoped<ReservationService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<SupportService>();
+builder.Services.AddScoped<DashboardService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o =>
 {
     o.Cookie.Name="BepNha.Mvc"; o.Cookie.HttpOnly=true; o.Cookie.SameSite=SameSiteMode.Lax;

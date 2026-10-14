@@ -18,20 +18,19 @@ Không cần Node.js, npm hoặc chạy bản Express để chạy website này.
 
 Phân quyền khu vực quản lý:
 
-- **Nhân viên:** đặt bàn, nhận bàn, xử lý trạng thái đơn món, xem sơ đồ bàn và lập/thanh toán hóa đơn.
-- **Quản lý:** có toàn bộ quyền của nhân viên, thêm quyền xem **Dashboard & doanh thu**, quản lý món và CRUD công thức.
+- **Nhân viên:** đặt bàn, nhận bàn, xử lý trạng thái đơn món, xem sơ đồ bàn, lập/thanh toán hóa đơn và trả lời tin nhắn hỗ trợ.
+- **Quản lý:** có toàn bộ quyền của nhân viên, thêm quyền xem **Dashboard & doanh thu**, quản lý món, CRUD công thức, xem danh sách khách hàng và lịch sử đặt bàn/đơn món của từng khách.
 - Dashboard/doanh thu được khóa ở backend với role `admin`; nhân viên không thể gọi trực tiếp API này.
 
 ## Đọc code trong Solution Explorer
 
 - `Program.cs`: cấu hình MVC, cookie đăng nhập, phân quyền, giới hạn đăng nhập, xử lý lỗi.
-- `Controllers/HomeController.cs`: trả Razor View.
-- `Controllers/AccountController.cs`: đăng nhập, đăng ký, đăng xuất.
-- `Controllers/MenuController.cs`: menu, danh mục, quản lý món.
-- `Controllers/ReservationsController.cs`: đặt bàn, nhận bàn, quản lý bàn.
-- `Controllers/OrdersController.cs`: gọi món, trạng thái, lượt dùng bàn, hóa đơn, thanh toán.
+- `Controllers/Customer/`: đăng nhập, menu và luồng khách hàng.
+- `Controllers/Staff/`: đặt bàn, nhận bàn, gọi món, hóa đơn và hộp thư hỗ trợ.
+- `Controllers/Admin/`: dashboard/doanh thu và quản lý khách hàng.
+- `Controllers/Shared/`: API nền và Razor Home dùng chung.
 - `Models/Requests.cs`: các lớp dữ liệu nhận từ giao diện và ràng buộc đầu vào.
-- `Services/`: xử lý nghiệp vụ, kiểm tra quyền sở hữu, giao dịch SQL.
+- `Services/Customer/`, `Services/Staff/`, `Services/Admin/`: nghiệp vụ được chia theo vai trò; mỗi service vẫn dùng kiểm tra quyền sở hữu và transaction SQL.
 - `Data/RestaurantDb.cs`: mở kết nối SQL Server, truy vấn có tham số và transaction bằng Dapper.
 - `Data/DatabaseInitializer.cs`: tạo database/schema và dữ liệu mẫu khi chạy lệnh init.
 - `Views/Home/Index.cshtml`, `Views/Shared/_Layout.cshtml`, `_Header.cshtml`, `_Footer.cshtml`: trang Razor và khung chung.

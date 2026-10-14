@@ -22,4 +22,10 @@ public class AccountService(RestaurantDb db)
         return await db.One("INSERT Users(username,passwordHash,name,phone,role) OUTPUT inserted.* VALUES(@username,@passwordHash,@name,@phone,'customer')",new {username,passwordHash=PasswordService.Hash(password),name,phone});
     }
     public Task<dynamic> Find(int id) => db.One("SELECT id,username,name,phone,role FROM Users WHERE id=@id",new {id});
+    public Task<List<dynamic>> Customers() => db.Query("""
+        SELECT u.id,u.username,u.name,u.phone,u.createdAt,
+          (SELECT COUNT(*) FROM Reservations r WHERE r.userId=u.id) reservationCount,
+          (SELECT COUNT(*) FROM Orders o WHERE o.userId=u.id) orderCount
+        FROM Users u WHERE u.role='customer' ORDER BY u.createdAt DESC,u.id DESC
+        """);
 }

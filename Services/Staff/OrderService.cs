@@ -94,10 +94,4 @@ public class OrderService(RestaurantDb db,ReservationService reservations)
             await db.Query("UPDATE DiningSessions SET status='closed',closedAt=SYSUTCDATETIME() WHERE id=@sessionId",new {sessionId=(int)lookup.sessionId}); return paid;
         });
     }
-    public Task<dynamic> Dashboard() => db.One("""
-        SELECT (SELECT COUNT(*) FROM Reservations WHERE status='pending') pendingReservations,
-        (SELECT COUNT(*) FROM DiningSessions WHERE closedAt IS NULL) activeTables,
-        (SELECT COUNT(*) FROM Orders WHERE status IN ('pending','preparing')) activeOrders,
-        (SELECT COALESCE(SUM(total),0) FROM Invoices WHERE status='paid' AND CONVERT(date,DATEADD(hour,7,paidAt))=CONVERT(date,DATEADD(hour,7,SYSUTCDATETIME()))) todayRevenue
-        """);
 }
