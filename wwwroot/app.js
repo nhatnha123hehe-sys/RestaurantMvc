@@ -10,7 +10,17 @@ const iconPaths={cart:'M3 3h2l2 12h11l3-9H6M9 21h.01M18 21h.01',clock:'M12 8v5l3
 const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${iconPaths[name]||iconPaths.menu}"/></svg>`;
 let toastTimer,renderVersion=0;
 let ready=false,initializing=false,initializationError=null;
+let revealObserver;
 function toast(message,error=false){const t=$('#toast');t.textContent=message;t.className='show'+(error?' error':'');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.className='',5000);}
+function enhanceView(){
+  if(typeof document.querySelectorAll!=='function')return;
+  const targets=[...document.querySelectorAll('#app > *,#app .dish,#app .panel,#app .section-top,#app .benefits')];
+  targets.forEach((el,index)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',`${Math.min(index,9)*45}ms`);});
+  revealObserver?.disconnect();
+  if('IntersectionObserver' in window){revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -30px'});targets.forEach(el=>revealObserver.observe(el));}
+  else targets.forEach(el=>el.classList.add('is-visible'));
+}
+function updateChrome(){document.querySelector('.header')?.classList?.toggle('scrolled',window.scrollY>8);$('#back-to-top')?.classList?.toggle('visible',window.scrollY>520);}
 async function api(path,method='GET',data){
   let response;
   try{response=await fetch('/api'+path,{method,headers:method==='GET'?{}:{'Content-Type':'application/json'},body:method==='GET'?undefined:JSON.stringify(data??{})});}
@@ -126,6 +136,7 @@ async function render(){
     else if(state.view==='cart')await cartPage(version);
     else if(state.view.startsWith('admin/'))await adminPage(state.view.slice(6),version);
     else navigate('menu');
+    if(version===renderVersion)enhanceView();
   }catch(e){if(version===renderVersion)app.innerHTML=empty('Không tải được dữ liệu',esc(e.message),'<button class="btn" data-action="reload">Thử lại</button>');}
 }
 function modal(title,body){dialog.innerHTML=`<div class="dialog-head"><h2 id="dialog-title">${title}</h2><button class="close-dialog no-print" data-action="close-modal" aria-label="Đóng">×</button></div>${body}`;if(!dialog.open)dialog.showModal();}
@@ -188,11 +199,15 @@ document.addEventListener('change',e=>{
   if(e.target.closest('#availability-form')){state.booking=null;$('#availability-results').innerHTML='';}
 });
 document.addEventListener('click',async e=>{
+  const supportMenu=$('#support-menu');
+  const supportOpen=supportMenu&&typeof supportMenu.hasAttribute==='function'&&!supportMenu.hasAttribute('hidden');
+  if(supportOpen&&!e.target.closest('#support-widget')){$('.support-toggle')?.click();}
   const b=e.target.closest('[data-action]');if(!b||b.disabled)return;const action=b.dataset.action,id=Number(b.dataset.id);
   try{
     if(['add','quantity','remove','refresh-cart'].includes(action)&&!await requireCustomer())return;
-    if(action==='support-toggle'){const menu=$('#support-menu'),toggle=$('.support-toggle');const open=menu.hasAttribute('hidden');menu.toggleAttribute('hidden',!open);toggle?.setAttribute('aria-expanded',String(open));return;}
+    if(action==='support-toggle'){const menu=$('#support-menu'),toggle=$('.support-toggle');const open=!menu||typeof menu.hasAttribute!=='function'||menu.hasAttribute('hidden');menu?.toggleAttribute?.('hidden',!open);toggle?.setAttribute?.('aria-expanded',String(open));return;}
     if(action==='support-chat'){const menu=$('#support-menu'),toggle=$('.support-toggle');menu?.setAttribute('hidden','');toggle?.setAttribute('aria-expanded','false');supportChatModal();return;}
+    if(action==='back-to-top'){window.scrollTo({top:0,behavior:'smooth'});return;}
     if(action==='dish-detail')await dishDetail(id);
     else if(action==='recipe-edit')await editRecipe(id);
     else if(action==='recipe-delete')deleteRecipe(id);
@@ -256,7 +271,9 @@ document.addEventListener('submit',async e=>{
   finally{if(button)button.disabled=false;}
 });
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#support-menu')?.setAttribute('hidden','');$('.support-toggle')?.setAttribute('aria-expanded','false');}});
 window.addEventListener('hashchange',()=>{render();window.scrollTo({top:0,behavior:'smooth'});});
+window.addEventListener('scroll',updateChrome,{passive:true});
 // Cập nhật tiến độ định kỳ; không làm gián đoạn nhập form hoặc dialog.
 setInterval(()=>{if(document.hidden||dialog.open||document.activeElement?.matches('input,select,textarea'))return;if(state.view==='my'||state.view.startsWith('admin/'))render();},10000);
 async function init(){
@@ -272,3 +289,4 @@ async function init(){
   finally{initializing=false;await render();}
 }
 init();
+updateChrome();
