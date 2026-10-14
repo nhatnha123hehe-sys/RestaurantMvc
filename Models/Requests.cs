@@ -51,3 +51,7 @@ public class RecipeInput
     [Range(1,20)] public int Servings { get; set; } = 1;
     [Range(1,1440)] public int PrepMinutes { get; set; } = 30;
 }
+public class SupportMessageInput
+{
+    [Required,MaxLength(500)] public string Message { get; set; } = "";
+}

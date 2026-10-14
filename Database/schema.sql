@@ -81,3 +81,25 @@ CREATE TABLE dbo.DishRecipes (
 );
 END;
 
+-- Tin nhắn chăm sóc khách hàng: khách và nhân viên trao đổi trong cùng một cuộc trò chuyện.
+IF OBJECT_ID('dbo.SupportConversations') IS NULL
+BEGIN
+CREATE TABLE dbo.SupportConversations (
+ id INT IDENTITY PRIMARY KEY,
+ customerId INT NOT NULL REFERENCES dbo.Users(id),
+ status VARCHAR(12) NOT NULL DEFAULT 'open' CHECK(status IN ('open','closed')),
+ createdAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+ lastMessageAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE UNIQUE INDEX IX_SupportConversation_OpenCustomer ON dbo.SupportConversations(customerId) WHERE status='open';
+CREATE TABLE dbo.SupportMessages (
+ id INT IDENTITY PRIMARY KEY,
+ conversationId INT NOT NULL REFERENCES dbo.SupportConversations(id),
+ senderId INT NOT NULL REFERENCES dbo.Users(id),
+ senderRole VARCHAR(20) NOT NULL CHECK(senderRole IN ('customer','staff','admin')),
+ message NVARCHAR(500) NOT NULL CHECK(LEN(message)>0),
+ createdAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_SupportMessages_Conversation ON dbo.SupportMessages(conversationId,id);
+END;
+
