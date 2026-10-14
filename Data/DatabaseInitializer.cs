@@ -19,7 +19,15 @@ public static class DatabaseInitializer
                 await master.ExecuteAsync($"CREATE DATABASE [{name}]");
         }
         var db=services.GetRequiredService<RestaurantDb>();
-        await db.Query(await File.ReadAllTextAsync(Path.Combine(root,"Database","schema.sql")));
+        var schema = await File.ReadAllTextAsync(Path.Combine(root,"Database","schema.sql"));
+        // Khi app khởi tạo database kiểm thử, connection đã trỏ đúng database đích.
+        // Không để lệnh USE cố định trong file chạy chuyển sang database demo chính.
+        schema = System.Text.RegularExpressions.Regex.Replace(schema, @"(?im)^\s*USE\s+[^;\r\n]+;?\s*$", "");
+        // schema.sql cũng có thể được chạy trực tiếp trong SSMS nên có các batch GO.
+        // Dapper không hiểu GO; tách batch trước khi gửi từng phần tới SQL Server.
+        foreach (var batch in System.Text.RegularExpressions.Regex.Split(schema, @"(?im)^\s*GO\s*(?:--.*)?$")
+            .Where(batch => !string.IsNullOrWhiteSpace(batch)))
+            await db.Query(batch);
         await db.Atomic(async()=>{
             foreach(var u in new[]{("admin","admin123","Quản lý Bếp Nhà","admin"),("nhanvien","nhanvien123","Nhân viên phục vụ","staff"),("khach","khach123","Khách trải nghiệm","customer")})
                 await db.Query("IF NOT EXISTS(SELECT 1 FROM Users WHERE username=@username) INSERT Users(username,passwordHash,name,phone,role) VALUES(@username,@hash,@name,'0901234567',@role)",new {username=u.Item1,hash=PasswordService.Hash(u.Item2),name=u.Item3,role=u.Item4});

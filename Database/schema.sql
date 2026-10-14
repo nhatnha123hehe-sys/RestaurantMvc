@@ -1,3 +1,15 @@
+IF DB_ID(N'RestaurantCNPMNC') IS NULL
+BEGIN
+    CREATE DATABASE RestaurantCNPMNC;
+END
+GO
+
+USE RestaurantCNPMNC;
+GO
+
+
+
+
 IF OBJECT_ID('dbo.Users') IS NULL
 BEGIN
 CREATE TABLE dbo.Users (

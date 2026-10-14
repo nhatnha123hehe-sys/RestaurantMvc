@@ -132,6 +132,9 @@ function modal(title,body){dialog.innerHTML=`<div class="dialog-head"><h2 id="di
 function authModal(register=false){
   modal('Chào mừng đến Bếp Nhà',`<p class="dialog-sub">Đặt bàn thuận tiện, gọi món thật dễ dàng.</p><div class="auth-tabs"><button data-action="auth-tab" class="${!register?'active':''}">Đăng nhập</button><button data-action="register-tab" class="${register?'active':''}">Tạo tài khoản</button></div><form id="auth-form" data-register="${register}">${register?'<label>Họ tên<input name="name" required maxlength="100" autocomplete="name"></label><label>Số điện thoại<input name="phone" type="tel" pattern="0[0-9]{9,10}" required autocomplete="tel"></label>':''}<label>Tên đăng nhập<input name="username" required minlength="3" maxlength="60" autocomplete="username"></label><label>Mật khẩu<input name="password" type="password" required ${register?'minlength="8"':''} maxlength="128" autocomplete="${register?'new-password':'current-password'}"></label><div class="form-error"></div><button class="btn full" type="submit">${register?'Tạo tài khoản':'Đăng nhập'} ${icon('arrow')}</button></form>${!register?'<div class="demo-box"><p>Tài khoản demo cho bài tập</p><div class="demo-logins"><button data-action="demo" data-user="khach">Khách hàng</button><button data-action="demo" data-user="nhanvien">Nhân viên</button><button data-action="demo" data-user="admin">Quản lý</button></div></div>':''}`);
 }
+function supportChatModal(){
+  modal('Nhắn trực tiếp với Bếp Nhà',`<p class="dialog-sub">Để lại lời nhắn, nhân viên sẽ phản hồi sớm nhất có thể.</p><form id="support-form"><label>Họ tên<input name="name" maxlength="100" value="${esc(state.user?.name||'')}" required autocomplete="name"></label><label>Số điện thoại<input name="phone" type="tel" pattern="0[0-9]{9,10}" maxlength="11" value="${esc(state.user?.phone||'')}" placeholder="0901234567" required autocomplete="tel"></label><label>Nội dung cần hỗ trợ<textarea name="message" rows="5" maxlength="1000" required placeholder="Ví dụ: Tôi muốn hỏi về giờ nhận bàn…"></textarea></label><div class="form-error" role="alert"></div><div class="actions"><button class="btn full" type="submit">Gửi yêu cầu hỗ trợ ${icon('arrow')}</button></div></form>`);
+}
 function cancelModal(type,id){modal(type==='reservation'?'Hủy đặt bàn':'Hủy đơn món',`<p class="dialog-sub">Nhập lý do để lưu lại thông tin xử lý.</p><form id="cancel-form" data-type="${type}" data-id="${id}"><label>Lý do hủy<textarea name="reason" required maxlength="300" placeholder="Nhập lý do hủy…"></textarea></label><div class="form-error"></div><button class="btn danger full" type="submit">Xác nhận hủy</button></form>`);}
 let detailRequest=0;
 async function dishDetail(id){
@@ -188,6 +191,8 @@ document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-action]');if(!b||b.disabled)return;const action=b.dataset.action,id=Number(b.dataset.id);
   try{
     if(['add','quantity','remove','refresh-cart'].includes(action)&&!await requireCustomer())return;
+    if(action==='support-toggle'){const menu=$('#support-menu'),toggle=$('.support-toggle');const open=menu.hasAttribute('hidden');menu.toggleAttribute('hidden',!open);toggle?.setAttribute('aria-expanded',String(open));return;}
+    if(action==='support-chat'){const menu=$('#support-menu'),toggle=$('.support-toggle');menu?.setAttribute('hidden','');toggle?.setAttribute('aria-expanded','false');supportChatModal();return;}
     if(action==='dish-detail')await dishDetail(id);
     else if(action==='recipe-edit')await editRecipe(id);
     else if(action==='recipe-delete')deleteRecipe(id);
@@ -223,6 +228,9 @@ document.addEventListener('submit',async e=>{
   if(button)button.disabled=true;
   try{
     if(form.id==='recipe-form'){await api(`/menu/${form.dataset.id}/recipe`,form.dataset.exists==='true'?'PUT':'POST',{ingredients:data.ingredients,instructions:data.instructions,servings:Number(data.servings),prepMinutes:Number(data.prepMinutes)});toast('Đã lưu công thức.');await dishDetail(Number(form.dataset.id));}
+    else if(form.id==='support-form'){
+      const key='bepnha-support-messages',messages=JSON.parse(localStorage.getItem(key)||'[]');messages.push({name:data.name,phone:data.phone,message:data.message,createdAt:new Date().toISOString()});localStorage.setItem(key,JSON.stringify(messages.slice(-20)));dialog.close();toast('Đã ghi nhận yêu cầu hỗ trợ. Bếp Nhà sẽ phản hồi sớm.');
+    }
     else if(form.id==='delete-recipe-form'){await api(`/menu/${form.dataset.id}/recipe`,'DELETE');toast('Đã xóa công thức.');await dishDetail(Number(form.dataset.id));}
     else if(form.id==='auth-form')await afterLogin(await api('/auth/'+(form.dataset.register==='true'?'register':'login'),'POST',data));
     else if(form.id==='availability-form'){

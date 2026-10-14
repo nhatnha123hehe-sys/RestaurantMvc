@@ -16,5 +16,30 @@
   <partial name="_Footer" />
   <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
+  <div class="support-widget" id="support-widget">
+    <div class="support-menu" id="support-menu" hidden>
+      <div class="support-menu-heading">
+        <strong>Chăm sóc khách hàng</strong>
+        <span>Bếp Nhà luôn sẵn sàng hỗ trợ bạn</span>
+      </div>
+      <button class="support-option support-option-chat" type="button" data-action="support-chat">
+        <span class="support-option-icon">💬</span>
+        <span><strong>Nhắn trực tiếp</strong><small>Để lại lời nhắn cho Bếp Nhà</small></span>
+      </button>
+      <a class="support-option" href="https://zalo.me/0868749948" target="_blank" rel="noopener noreferrer">
+        <span class="support-option-icon support-option-zalo">Z</span>
+        <span><strong>Nhắn qua Zalo</strong><small>0868 749 948</small></span>
+        <span class="support-option-arrow">↗</span>
+      </a>
+      <a class="support-option" href="https://www.facebook.com/nhatle.1907.2006" target="_blank" rel="noopener noreferrer">
+        <span class="support-option-icon support-option-facebook">f</span>
+        <span><strong>Nhắn qua Fanpage</strong><small>Facebook Bếp Nhà</small></span>
+        <span class="support-option-arrow">↗</span>
+      </a>
+    </div>
+    <button class="support-toggle" type="button" data-action="support-toggle" aria-expanded="false" aria-controls="support-menu" aria-label="Mở chăm sóc khách hàng">
+      <span class="support-toggle-icon">💬</span><span>Hỗ trợ</span>
+    </button>
+  </div>
 </body>
 </html>
