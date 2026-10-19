@@ -6,6 +6,15 @@ using RestaurantMvc.Models;
 namespace RestaurantMvc.Data;
 public static class DatabaseInitializer
 {
+    private sealed class RecipeSeed
+    {
+        public string Name { get; set; } = "";
+        public string Ingredients { get; set; } = "";
+        public string Instructions { get; set; } = "";
+        public int Servings { get; set; }
+        public int PrepMinutes { get; set; }
+    }
+
     public static async Task Initialize(IServiceProvider services,string root)
     {
         var config=services.GetRequiredService<IConfiguration>();
@@ -37,6 +46,13 @@ public static class DatabaseInitializer
             var dishes=JsonSerializer.Deserialize<List<DishInput>>(await File.ReadAllTextAsync(Path.Combine(root,"Database","dishes.json")),new JsonSerializerOptions {PropertyNameCaseInsensitive=true})!;
             foreach(var dish in dishes)
                 await db.Query("IF NOT EXISTS(SELECT 1 FROM Dishes WHERE name=@Name) INSERT Dishes(categoryId,name,description,price,art) VALUES(@CategoryId,@Name,@Description,@Price,@Art)",dish);
+            var recipesPath=Path.Combine(root,"Database","recipes.json");
+            if(File.Exists(recipesPath))
+            {
+                var recipes=JsonSerializer.Deserialize<List<RecipeSeed>>(await File.ReadAllTextAsync(recipesPath),new JsonSerializerOptions {PropertyNameCaseInsensitive=true})!;
+                foreach(var recipe in recipes)
+                    await db.Query("INSERT DishRecipes(dishId,ingredients,instructions,servings,prepMinutes) SELECT id,@Ingredients,@Instructions,@Servings,@PrepMinutes FROM Dishes d WHERE d.name=@Name AND NOT EXISTS(SELECT 1 FROM DishRecipes r WHERE r.dishId=d.id)",recipe);
+            }
             if(await db.One("SELECT TOP 1 id FROM RestaurantTables")==null)
                 for(var i=1;i<=10;i++) await db.Query("INSERT RestaurantTables(code,capacity) VALUES(@code,@capacity)",new {code=$"B{i:00}",capacity=i<=3?2:i<=8?4:6});
             return true;

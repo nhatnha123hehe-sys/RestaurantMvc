@@ -163,6 +163,7 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
         var url=$"/menu/{id}/recipe";
         var recipe=new {ingredients="Gạo: 100 g\nThịt gà: 150 g",instructions="Chuẩn bị nguyên liệu.\nChế biến và trình bày.",servings=1,prepMinutes=30};
         try {
+            await fixture.Sql("DELETE DishRecipes WHERE dishId=@id",new {id});
             Assert.Null((await Expect(guest,$"/menu/{id}"))["recipe"]);
             foreach(var method in new[]{"POST","PUT","DELETE"}) {
                 await Expect(guest,url,method,recipe,401);await Expect(customer,url,method,recipe,403);await Expect(staff,url,method,recipe,403);
@@ -185,7 +186,7 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
             using var scope=fixture.Factory.Services.CreateScope();
             var root=fixture.Factory.Services.GetRequiredService<IWebHostEnvironment>().ContentRootPath;
             await DatabaseInitializer.Initialize(scope.ServiceProvider,root);
-            Assert.Null((await Expect(admin,$"/menu/{id}"))["recipe"]);
+            Assert.NotNull((await Expect(admin,$"/menu/{id}"))["recipe"]);
         } finally {await fixture.Sql("DELETE DishRecipes WHERE dishId=@id; UPDATE Dishes SET visible=1 WHERE id=@id",new {id});}
     }
 }
