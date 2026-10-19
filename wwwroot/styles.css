@@ -74,3 +74,24 @@ dialog{border:1px solid #e6e9df;border-radius:18px;padding:29px;width:460px;max-
 .support-conversation-body{display:flex;flex-direction:column;min-width:0;flex:1;gap:2px}.support-conversation-body strong{font-size:14px}.support-conversation-body small{font-size:10px;color:var(--muted)}.support-conversation-body>span{font-size:12px;color:#697463;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .support-conversation-count{display:grid;place-items:center;min-width:25px;height:25px;padding:0 7px;border-radius:999px;background:var(--mint);color:var(--green);font-size:11px;font-weight:700}
 .booking-time-warning{display:flex;align-items:center;gap:7px;margin:14px 0 0;font-size:12px}.booking-time-warning .icon{width:15px;height:15px;flex:0 0 15px}
+.menu-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.menu-toolbar .filters{margin-bottom:0}.menu-count{font-size:11px;color:var(--muted);white-space:nowrap}
+
+/* UI polish: depth, focus states and responsive touch targets */
+:root{--shadow-soft:0 18px 55px rgba(39,56,35,.10);--shadow-lift:0 20px 42px rgba(39,56,35,.15);--ring:0 0 0 4px rgba(170,194,151,.28)}
+body{background:radial-gradient(circle at 8% 0%,#f0f4e9 0,transparent 25rem),radial-gradient(circle at 92% 18%,#f8efe3 0,transparent 22rem),var(--cream)}
+.header{background:rgba(255,254,251,.88);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(52,76,53,.06)}
+.brand>span{letter-spacing:-.5px}.nav-link{transition:color .2s,transform .2s}.nav-link:hover{color:var(--green);transform:translateY(-1px)}
+.hero{box-shadow:var(--shadow-soft);border:1px solid rgba(255,255,255,.7);background:linear-gradient(135deg,#edf2e5 0%,#e7eddd 53%,#f3eee4 100%)}
+.hero-copy{padding-top:54px}.hero h1{letter-spacing:-1.4px;text-wrap:balance}.hero-art{background:radial-gradient(circle at 58% 49%,#d6e1c4 0,#d6e1c400 68%)}
+.btn{box-shadow:0 7px 16px rgba(52,76,53,.13);transition:background .2s,transform .2s,box-shadow .2s}.btn:hover{box-shadow:0 10px 22px rgba(52,76,53,.2)}.btn:focus-visible{box-shadow:var(--ring)}
+.search input,.input,input:not([type=checkbox]):not([type=radio]),select,textarea{transition:border-color .2s,box-shadow .2s,background .2s}.search input:focus,input:focus,select:focus,textarea:focus{box-shadow:var(--ring);border-color:#9eb58d;background:#fff}
+.filter{box-shadow:0 2px 0 rgba(52,76,53,.03)}.filter.active{box-shadow:0 7px 16px rgba(52,76,53,.16)}
+.menu-grid{grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:24px}.dish{box-shadow:0 4px 18px rgba(39,56,35,.045);transition:transform .28s cubic-bezier(.2,.75,.2,1),box-shadow .28s,border-color .28s}.dish:hover{transform:translateY(-7px);box-shadow:var(--shadow-lift);border-color:#cbd8c2}.dish-art{background:linear-gradient(145deg,#f4f2e9,#eaf0e2)}.dish-body{padding:19px 20px 20px}.add-btn{box-shadow:0 4px 10px rgba(52,76,53,.08)}.add-btn:active{box-shadow:none}
+.panel,.stat,.table-card,.data-wrap{box-shadow:0 4px 22px rgba(39,56,35,.05);transition:box-shadow .25s,border-color .25s}.panel:hover,.stat:hover,.table-card:hover{border-color:#d2ddca;box-shadow:var(--shadow-soft)}
+.stat{background:linear-gradient(145deg,#fff 0%,#fbfcf8 100%)}.stat strong{letter-spacing:-.5px}.side-link{transition:background .2s,color .2s,transform .2s}.side-link:hover{transform:translateX(3px)}
+.support-toggle{box-shadow:0 12px 30px rgba(37,56,33,.24);border:2px solid rgba(255,255,255,.55)}.support-menu{box-shadow:0 22px 60px rgba(32,48,25,.18);backdrop-filter:blur(12px)}
+dialog{box-shadow:0 30px 100px rgba(23,39,15,.25);animation:dialog-in .22s ease-out}.close-dialog{transition:background .2s,transform .2s}.close-dialog:hover{background:#e4ebdd;transform:rotate(90deg)}
+@keyframes dialog-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.notice{border:1px solid rgba(108,133,80,.12)}.booking-time-warning{box-shadow:0 4px 12px rgba(170,122,53,.08)}
+@media(max-width:760px){.hero-copy{padding-top:32px}.menu-toolbar{align-items:flex-start;flex-direction:column;gap:5px}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.dish{border-radius:12px}.dish-body{padding:13px}.panel:hover,.stat:hover,.table-card:hover{box-shadow:none}.support-toggle{box-shadow:0 9px 24px rgba(37,56,33,.2)}}
+@media(prefers-reduced-motion:reduce){dialog{animation:none}}
