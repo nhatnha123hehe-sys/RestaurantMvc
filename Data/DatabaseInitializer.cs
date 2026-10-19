@@ -51,7 +51,11 @@ public static class DatabaseInitializer
             {
                 var recipes=JsonSerializer.Deserialize<List<RecipeSeed>>(await File.ReadAllTextAsync(recipesPath),new JsonSerializerOptions {PropertyNameCaseInsensitive=true})!;
                 foreach(var recipe in recipes)
+                {
                     await db.Query("INSERT DishRecipes(dishId,ingredients,instructions,servings,prepMinutes) SELECT id,@Ingredients,@Instructions,@Servings,@PrepMinutes FROM Dishes d WHERE d.name=@Name AND NOT EXISTS(SELECT 1 FROM DishRecipes r WHERE r.dishId=d.id)",recipe);
+                    // Sửa dữ liệu seed cũ từng dùng chuỗi `` `n `` thay vì xuống dòng thật.
+                    await db.Query("UPDATE r SET ingredients=@Ingredients,instructions=@Instructions,servings=@Servings,prepMinutes=@PrepMinutes FROM DishRecipes r INNER JOIN Dishes d ON d.id=r.dishId WHERE d.name=@Name AND r.ingredients LIKE '%`n%'",recipe);
+                }
             }
             if(await db.One("SELECT TOP 1 id FROM RestaurantTables")==null)
                 for(var i=1;i<=10;i++) await db.Query("INSERT RestaurantTables(code,capacity) VALUES(@code,@capacity)",new {code=$"B{i:00}",capacity=i<=3?2:i<=8?4:6});
