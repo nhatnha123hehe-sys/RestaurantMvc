@@ -60,7 +60,7 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
         using var c=fixture.Client(); var html=await c.GetStringAsync("/"); Assert.Contains("Bếp Nhà",html); Assert.Contains("/app.js",html);
         Assert.True((await c.GetAsync("/styles.css")).IsSuccessStatusCode);
         Assert.True((await c.GetAsync("/assets/rice.svg")).IsSuccessStatusCode);
-        Assert.Equal(12,(await Expect(c,"/menu")).AsArray().Count);
+        Assert.Equal(42,(await Expect(c,"/menu")).AsArray().Count);
         Assert.Equal(4,(await Expect(c,"/categories")).AsArray().Count);
     }
     [Theory]
