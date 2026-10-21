@@ -1,8 +1,11 @@
+using RestaurantMvc.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantMvc.Services;
 
-namespace RestaurantMvc.Controllers;
+namespace RestaurantMvc.Areas.Admin.Controllers;
+
+[Area("Admin")]
 
 [Route("api"), Authorize(Roles="admin")]
 public class DashboardController(DashboardService service) : ApiController

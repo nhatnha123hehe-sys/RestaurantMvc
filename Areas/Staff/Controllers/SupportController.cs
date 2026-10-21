@@ -1,9 +1,12 @@
+using RestaurantMvc.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantMvc.Models;
 using RestaurantMvc.Services;
 
-namespace RestaurantMvc.Controllers;
+namespace RestaurantMvc.Areas.Staff.Controllers;
+
+[Area("Staff")]
 
 [Route("api/support"), Authorize]
 public class SupportController(SupportService service) : ApiController

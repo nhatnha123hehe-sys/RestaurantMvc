@@ -49,6 +49,7 @@ app.Use(async (context,next) => {
 });
 app.UseStaticFiles(); app.UseRouting(); app.UseRateLimiter(); app.UseAuthentication(); app.UseAuthorization();
 app.MapControllers();
+app.MapControllerRoute(name:"areas",pattern:"{area:exists}/{controller=Index}/{action=Index}/{id?}");
 app.MapControllerRoute(name:"default",pattern:"{controller=Home}/{action=Index}/{id?}");
 app.Run();
 

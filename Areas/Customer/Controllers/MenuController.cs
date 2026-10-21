@@ -1,9 +1,12 @@
+using RestaurantMvc.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using RestaurantMvc.Services;
 using RestaurantMvc.Models;
 using RestaurantMvc.Data;
-namespace RestaurantMvc.Controllers;
+namespace RestaurantMvc.Areas.Customer.Controllers;
+
+[Area("Customer")]
 [Route("api")]
 public class MenuController(MenuService service,RestaurantDb db) : ApiController
 {

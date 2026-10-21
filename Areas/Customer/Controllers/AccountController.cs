@@ -1,3 +1,4 @@
+using RestaurantMvc.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -5,7 +6,9 @@ using Microsoft.AspNetCore.RateLimiting;
 using System.Security.Claims;
 using RestaurantMvc.Services;
 using RestaurantMvc.Models;
-namespace RestaurantMvc.Controllers;
+namespace RestaurantMvc.Areas.Customer.Controllers;
+
+[Area("Customer")]
 [Route("api/auth")]
 public class AccountController(AccountService service) : ApiController
 {

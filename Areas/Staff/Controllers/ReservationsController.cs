@@ -1,8 +1,11 @@
+using RestaurantMvc.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using RestaurantMvc.Services;
 using RestaurantMvc.Models;
-namespace RestaurantMvc.Controllers;
+namespace RestaurantMvc.Areas.Staff.Controllers;
+
+[Area("Staff")]
 [Route("api")]
 public class ReservationsController(ReservationService service) : ApiController
 {
