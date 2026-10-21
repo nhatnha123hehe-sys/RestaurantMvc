@@ -1,0 +1,531 @@
+[
+  {
+    "dish": "Cơm gà lá dứa",
+    "file": "/assets/menu/com-ga-la-dua.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Hainanese_chicken_rice_(in_Macau).jpg",
+    "author": "Pauloleong2002",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Pauloleong2002"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "ed1110077a95b29233b869523ddec612df204281fc94c0998a06887692160ace"
+  },
+  {
+    "dish": "Bún bò Huế",
+    "file": "/assets/menu/bun-bo-hue.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Bun-Bo-Hue-from-Huong-Giang-2011.jpg",
+    "author": "Kham Tran - www.khamtran.com",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Khamtran",
+      "http://www.khamtran.com/"
+    ],
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "774ce4bbef6c792d9c2a24fc1e077478996794d740f027eed56768d79176cd32"
+  },
+  {
+    "dish": "Cá hồi áp chảo",
+    "file": "/assets/menu/ca-hoi-ap-chao.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Salmon,_pan-seared_and_glazed,_with_Brussels_sprouts_and_root_vegetables_-_Massachusetts.jpg",
+    "author": "Daderot",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Daderot"
+    ],
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "df2faea6f6e7e28b5665afbd1108de30f182dc0a8b0ac84a007ce8135c110794"
+  },
+  {
+    "dish": "Sườn nướng mật ong",
+    "file": "/assets/menu/suon-nuong-mat-ong.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Barbecued_pork_ribs.jpg",
+    "author": "CNEcija12345",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:CNEcija12345"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "6f0a93855790c20058c9f29152ec2b5e643d3df61639a8ae268681ea5dd9ad84"
+  },
+  {
+    "dish": "Cơm nấm rau củ",
+    "file": "/assets/menu/com-nam-rau-cu.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:%22Mushroom_Fried_Rice%22.jpg",
+    "author": "Thamizhpparithi Maari",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Thamizhpparithi_Maari"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "c0b8408196ab99aa0205188f80155b715a472e12572010868d15afb33288af0e"
+  },
+  {
+    "dish": "Gỏi cuốn tôm thịt",
+    "file": "/assets/menu/goi-cuon-tom-thit.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Goi_cuon_Phuongnhu.JPG",
+    "author": "Phuongnhu",
+    "authorLinks": [
+      "https://commons.wikimedia.org/w/index.php?title=User:Phuongnhu&amp;action=edit&amp;redlink=1"
+    ],
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "5ee814c00456abd63fe7b289b9982f2178d8e122e180e0e5a2d5f57a8a37e232"
+  },
+  {
+    "dish": "Salad vườn nhà",
+    "file": "/assets/menu/salad-vuon-nha.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mixed_green_salad.jpg",
+    "author": "FranHogan",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:FranHogan"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "6986e07110b4168a649990b87c0cd745f4b41f6587a9d7c7136fee8055775f12"
+  },
+  {
+    "dish": "Khoai tây chiên",
+    "file": "/assets/menu/khoai-tay-chien.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Complimentary_plate_of_fries_(9379689031).jpg",
+    "author": "City Foodsters",
+    "authorLinks": [
+      "https://www.flickr.com/people/89060048@N03"
+    ],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "a8d720b4aecc99f1beb63571d1ef6de9731bfc6bcb09ba2712f334266e6783b9"
+  },
+  {
+    "dish": "Trà đào cam sả",
+    "file": "/assets/menu/tra-dao-cam-sa.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Peach_iced_tea_with_orange_slices.jpg",
+    "author": "Baoothersks",
+    "authorLinks": [
+      "https://commons.wikimedia.org/w/index.php?title=User:Baoothersks&amp;action=edit&amp;redlink=1"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "681126512cbe6d9e393aab94307ddbfd1cf40a57607d0ad5100992929fdacebf"
+  },
+  {
+    "dish": "Nước chanh tươi",
+    "file": "/assets/menu/nuoc-chanh-tuoi.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lemonade_2.jpg",
+    "author": "Shisma",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Shisma"
+    ],
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "4cc8c336c4aa69e29c10fbcbdd74a281e8fe7989425be67775c00f02c75fb6c4"
+  },
+  {
+    "dish": "Cà phê sữa đá",
+    "file": "/assets/menu/ca-phe-sua-da.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Vietnamese_iced_coffee_-_Jan_31,_2018.jpg",
+    "author": "Vinnie Cartabiano",
+    "authorLinks": [],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "30120b5933ccf40779fe22d1e27998d7d8c4cc4dff09628bbac42b080eddb665"
+  },
+  {
+    "dish": "Panna cotta xoài",
+    "file": "/assets/menu/panna-cotta-xoai.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Blueberry_mango_panna_cotta_prepared_with_soymilk_flickr_user_norwichnuts.jpg",
+    "author": "norwichnuts",
+    "authorLinks": [
+      "https://www.flickr.com/photos/veganfeast/"
+    ],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "81692f8aadb124ff3624a22d3df4906084d565ffceca8a928270f5b4bec895d7"
+  },
+  {
+    "dish": "Phở bò tái",
+    "file": "/assets/menu/pho-bo-tai.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Beef_noodle_soup_(Ph%E1%BB%9F_b%C3%B2)_-_Pho_Hanoi_Authentic_2024-12-01.jpg",
+    "author": "Andy Li",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Onthewings"
+    ],
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "b883ab2655a1fdb61fe5fda57cec8aa42167d1bd5b39ca50d637f5f85526898f"
+  },
+  {
+    "dish": "Mì Quảng tôm thịt",
+    "file": "/assets/menu/mi-quang-tom-thit.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mi_Quang_1A_Danang.jpg",
+    "author": "Jpatokal",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Jpatokal"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "71a105bed3acb6fb58cc1bb627f21a83d1a7041cc8f9db7c482420403908ae12"
+  },
+  {
+    "dish": "Bún thịt nướng",
+    "file": "/assets/menu/bun-thit-nuong.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Bun_thit_nuong.jpg",
+    "author": "Lưu Ly",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:L%C6%B0u_Ly"
+    ],
+    "license": "Public domain",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "ba9d97223ff518634fd01795ea9b30105ec374a0381a0e3834e726a3f76011d2"
+  },
+  {
+    "dish": "Gà nướng lá chanh",
+    "file": "/assets/menu/ga-nuong-la-chanh.jpg",
+    "source": "https://yummyday.vn/ga-nuong-la-chanh-684",
+    "author": "YummyDay",
+    "authorLinks": [],
+    "license": "Copyright retained by source",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "f22e07cb11e498b78d369be99dbdaeadebf5de39b424f957557bf8cfd243ee7f"
+  },
+  {
+    "dish": "Cá basa kho tộ",
+    "file": "/assets/menu/ca-basa-kho-to.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:C%C3%A1_kho_t%E1%BB%99,_c%C3%A1_h%C3%BA.jpg",
+    "author": "Charles Haynes",
+    "authorLinks": [
+      "https://www.flickr.com/people/87232391@N00"
+    ],
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "d9e5c34280f6179910963c5acbd00118af4d597bb3e30f0af8a06b4307019b42"
+  },
+  {
+    "dish": "Mì xào bò rau củ",
+    "file": "/assets/menu/mi-xao-bo-rau-cu.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Beef_Stir-fried_Noodles_-_Frank%27s_Noodle_House.jpg",
+    "author": "TurquoiseGoose",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:TurquoiseGoose"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "d2c1a956df301adb0b409c9b9773701d1fba10ec120ec5df1c7a415e9392e57b"
+  },
+  {
+    "dish": "Cơm sườn bì chả",
+    "file": "/assets/menu/com-suon-bi-cha.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:C%C6%A1m_T%E1%BA%A5m,_Da_Nang,_Vietnam.jpg",
+    "author": "Christopher Crouzet",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Christopher_Crouzet"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "1038f0314a6f2a463f10d2bb3913ee6bf76b70c84ab615b4e7ca921997756bd5"
+  },
+  {
+    "dish": "Đậu hũ sốt nấm",
+    "file": "/assets/menu/dau-hu-sot-nam.jpg",
+    "source": "https://www.hirokoliston.com/agedashi-tofu-mushroom-sauce/",
+    "author": "Hiroko Liston",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "cd46a735f1bb9edf594225ec3a94582c90c54aed13272f06e7dc45197c99da47"
+  },
+  {
+    "dish": "Chả giò tôm thịt",
+    "file": "/assets/menu/cha-gio-tom-thit.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cha_gio.jpg",
+    "author": "amrufm",
+    "authorLinks": [
+      "https://www.flickr.com/people/92405724@N00"
+    ],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "c4c07e110d077d2a1a4366b32a5e984529a62d692aac86a95d28a9c3a40d32df"
+  },
+  {
+    "dish": "Há cảo hấp",
+    "file": "/assets/menu/ha-cao-hap.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Har_Gow_at_Canal_Luna_restaurant,_InterContinental_Guangzhou_Exhibition_Center_(20180923125523).jpg",
+    "author": "N509FZ",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:N509FZ"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "ce2f692fa921d4aeeec08ed1db7a797c9045bc2628b40fc458645ce3d8b93d8e"
+  },
+  {
+    "dish": "Bánh xếp chiên",
+    "file": "/assets/menu/banh-xep-chien.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Fried_Pork_Dumplings_with_Sauce_(Taiwan).jpg",
+    "author": "Ralff Nestor Nacor",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Ralffralff"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "9cc63b4fc28e94081a0e2bfb6da36c91f4e68118871c7848340eefe9d291a1d1"
+  },
+  {
+    "dish": "Đậu hũ chiên sả",
+    "file": "/assets/menu/dau-hu-chien-sa.jpg",
+    "source": "https://www.wokandkin.com/easy-lemongrass-tofu/",
+    "author": "Wok & Kin",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "bd9ae34acc354cb380e1e87c6fef1b06d9be39706f2c0f3e0fbbae85d6bbef14"
+  },
+  {
+    "dish": "Bắp xào tôm khô",
+    "file": "/assets/menu/bap-xao-tom-kho.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:B%E1%BB%AFa_%C4%83n_gia_%C4%91%C3%ACnh_m%C3%B3n_b%E1%BA%AFp_x%C3%A0o_t%C3%A9p_hay_ru%E1%BB%91c,_ng1th12n2019_(1).jpg",
+    "author": "Phương Huy",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Ph%C6%B0%C6%A1ng_Huy"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "ae37b82996931ff9da7fcc5296697abee4729d1af9e2c992c18119fea02b6267"
+  },
+  {
+    "dish": "Gà popcorn",
+    "file": "/assets/menu/ga-popcorn.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:KFC_Popcorn_Chicken_(12956064765).jpg",
+    "author": "Mike Mozart from Funny YouTube, USA",
+    "authorLinks": [
+      "https://www.flickr.com/people/39160147@N03"
+    ],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "d24986c3857a144a4edd8c5abb95e59e5adb3a046969c30def24b6ec6887f714"
+  },
+  {
+    "dish": "Nấm chiên giòn",
+    "file": "/assets/menu/nam-chien-gion.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Fried_mushrooms_with_sauces_(cropped).jpg",
+    "author": "jeffreyw",
+    "authorLinks": [
+      "https://www.flickr.com/people/7927684@N03"
+    ],
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "179019a73d6734f51242fe33f804fdf60cdbea6b41a700e6172ea721e7035d44"
+  },
+  {
+    "dish": "Súp bí đỏ kem tươi",
+    "file": "/assets/menu/sup-bi-do-kem-tuoi.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Autumn_Soup_(Unsplash)_cropped.jpg",
+    "author": "Cala cala_maffia",
+    "authorLinks": [
+      "https://unsplash.com/@cala_maffia"
+    ],
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "12857da3b8e81bd8d0b6bc4f9fceeea4a8e303d6571f7d39c3c7af940ee1466b"
+  },
+  {
+    "dish": "Trà tắc mật ong",
+    "file": "/assets/menu/tra-tac-mat-ong.jpg",
+    "source": "https://www.dienmayxanh.com/vao-bep/cach-lam-tra-tac-mat-ong-thanh-mat-thom-ngon-giai-nhiet-ngay-12643",
+    "author": "Điện máy XANH",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "9dd4bc927d292823e6cf2a7b5ee6c3cd1440ae31520e9ffa5a4488524aabbb1b"
+  },
+  {
+    "dish": "Trà vải hoa hồng",
+    "file": "/assets/menu/tra-vai-hoa-hong.jpg",
+    "source": "https://www.dienmayxanh.com/vao-bep/3-cach-lam-tra-vai-va-hong-tra-vai-don-gian-tai-nha-02042",
+    "author": "Điện máy XANH",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "12226103b032fb85b75978fe72b5969c343261e1986ea7b2928bb233aedc93aa"
+  },
+  {
+    "dish": "Soda chanh dây",
+    "file": "/assets/menu/soda-chanh-day.jpg",
+    "source": "https://www.bartender.edu.vn/soda-chanh-day",
+    "author": "Bartender.edu.vn",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "5dfb35dbd07ce08ddc03e8ec8239da26e1343d77a700eb989549e9ff6f6c530b"
+  },
+  {
+    "dish": "Nước ép cam tươi",
+    "file": "/assets/menu/nuoc-ep-cam-tuoi.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Orange_juice_1_edit1.jpg",
+    "author": "Agency of the United States Department of Agriculture\nEdited Version by: Arad",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Arad"
+    ],
+    "license": "Public domain",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "0d7b64c7c62d30711aa1e2f74e89fe4460150b11774d7e31fee5cf1d3d9f3b0e"
+  },
+  {
+    "dish": "Nước ép dứa bạc hà",
+    "file": "/assets/menu/nuoc-ep-dua-bac-ha.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pineapple_Juice_in_Glass_Jar.jpg",
+    "author": "Srini297",
+    "authorLinks": [
+      "https://commons.wikimedia.org/w/index.php?title=User:Srini297&amp;action=edit&amp;redlink=1"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "368924f682778e1c91d59a89b29d9eac0cbee490db26f4c5ba6fdd2312304eaf"
+  },
+  {
+    "dish": "Cacao nóng",
+    "file": "/assets/menu/cacao-nong.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Hot_chocolate_in_western.jpg",
+    "author": "Geoffreyrabbit",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Geoffreyrabbit"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "b9b44120b14cfcb9e517473ee2dbb05d88706b72cbc3260d2343bb523679568b"
+  },
+  {
+    "dish": "Bạc xỉu",
+    "file": "/assets/menu/bac-xiu.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ly_p%E1%BA%B7c_x%E1%BB%89u_s%E1%BB%AFa_%C4%91%C3%A1_%E1%BB%9F_Q1_ng18th8n2022.jpg",
+    "author": "Phương Huy",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Ph%C6%B0%C6%A1ng_Huy"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "127830826bb6d96cce8b9d6b35783ea6a6bb35121956f5ca06e41c6bb548a4d4"
+  },
+  {
+    "dish": "Chè khúc bạch",
+    "file": "/assets/menu/che-khuc-bach.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ch%C3%A8_kh%C3%BAc_b%E1%BA%A1ch_%E1%BB%9F_qu%C3%A1n_Th%E1%BA%A3o_Vy_2020_09_06.jpg",
+    "author": "Phương Huy",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Ph%C6%B0%C6%A1ng_Huy"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "21cbc3386a9afa78abf029ce2de161ed66af804fb67b79bda5f2b2bea46d1af4"
+  },
+  {
+    "dish": "Tàu hũ trân châu đường đen",
+    "file": "/assets/menu/tau-hu-tran-chau-duong-den.jpg",
+    "source": "https://www.beemart.vn/cong-thuc-lam-pudding-tau-hu-tran-chau-duong-den",
+    "author": "Beemart",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "0ed05fa59f551408ed21e36bc8db743054b032319a30ffdb15a589fc26fab409"
+  },
+  {
+    "dish": "Kem dừa nướng",
+    "file": "/assets/menu/kem-dua-nuong.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Coconut_Ice_Cream,_Bangkok.jpg",
+    "author": "Anilakeo",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Anilakeo"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "05bec76c04ad93189343dbe0e918477c940362898b5941489750ddcdb3fd7676"
+  },
+  {
+    "dish": "Bánh flan cà phê",
+    "file": "/assets/menu/banh-flan-ca-phe.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Homemade_Flan.jpg",
+    "author": "Cary Bass",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Bastique"
+    ],
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "eab67285f3bed87b4df3890832d6bf1ac446b343d3288e4e75ce679413cc0a99"
+  },
+  {
+    "dish": "Mochi kem trà xanh",
+    "file": "/assets/menu/mochi-kem-tra-xanh.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Matcha_flavored_mochi.jpg",
+    "author": "Fumikas Sagisavas",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Fumikas_Sagisavas"
+    ],
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "0b25c899d97bfa909495d21319426e3dac4d4519401ad04a39413364b001b40c"
+  },
+  {
+    "dish": "Bánh chuối nướng",
+    "file": "/assets/menu/banh-chuoi-nuong.jpg",
+    "source": "https://phuongskitchen.com/2024/02/15/banh-chuoi-nuong-truyen-thong/",
+    "author": "Phuong’s Kitchen",
+    "authorLinks": [],
+    "license": "Copyright retained by source; educational project reference",
+    "licenseUrl": "",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "d3527c68eb993e0414404ffee30c22d0c00f56509b7097d1063cc97f443bbd75"
+  },
+  {
+    "dish": "Trái cây theo mùa",
+    "file": "/assets/menu/trai-cay-theo-mua.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:20241117_Fruit_Platter_anagoria.jpg",
+    "author": "Anagoria",
+    "authorLinks": [
+      "https://commons.wikimedia.org/wiki/User:Anagoria"
+    ],
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Resized and JPEG compressed; cropped by the menu layout",
+    "sha256": "bce6b887535cd9f346635774d1cc071403cf39ae59284963dd3ece0fbc97c749"
+  }
+]

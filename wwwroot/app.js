@@ -47,7 +47,53 @@ function menuPage(){
   app.innerHTML=`<div class="ambient-decor" aria-hidden="true"><div class="ambient-orbit ambient-orbit-left"></div><div class="ambient-orbit ambient-orbit-right"></div><div class="ambient-card ambient-card-left"><span class="ambient-kicker">BẾP NHÀ · 01</span><strong>Nấu bằng<br>tấm lòng</strong><span class="ambient-line"></span><small>Nguyên liệu tươi<br>mỗi sáng</small><div class="ambient-stamp">✦<br><small>made<br>with care</small></div></div><div class="ambient-card ambient-card-right"><span class="ambient-kicker">MÓN GỢI Ý</span><img src="/assets/dish-food.jpg" alt="Món ăn gợi ý"><strong>Cơm gà<br>lá dứa</strong><small>Đậm vị · 49.000 ₫</small><a href="#menu">Xem món ${icon('arrow')}</a></div></div><section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="dot"></span> Tươi mỗi ngày · Ngon mỗi bữa</div><h1>Hẹn nhau một bữa<br>ngon ở Bếp Nhà.</h1><p>Món quen được nấu bằng sự tận tâm. Chọn món bạn thích, đặt một chiếc bàn và để chúng tôi chăm chút bữa ăn.</p><div class="hero-actions"><a href="#reserve" class="btn">Đặt bàn ngay ${icon('arrow')}</a><span class="hero-note">Bàn sẵn sàng, bạn cứ thảnh thơi.</span></div></div><div class="hero-art"><img src="/assets/hero-food.jpg" alt="Món ăn tươi ngon tại Bếp Nhà"><div class="hero-badge"><strong>Vị ngon từ điều giản dị</strong>Nguyên liệu tươi · Bếp nấu mỗi ngày</div></div></section><div class="benefits"><span>${icon('leaf')} Nguyên liệu tươi ngon</span><span>${icon('clock')} Phục vụ 10:00 – 22:00</span><span>${icon('check')} Đặt bàn dễ dàng</span></div><div class="section-top"><div><div class="eyebrow">Hôm nay ăn gì?</div><h2>Thực đơn Bếp Nhà</h2><p>Chọn món yêu thích cho bữa ăn của bạn.</p></div><div class="search">${icon('search')}<input id="menu-search" type="search" placeholder="Tìm món bạn thích…" value="${esc(state.search)}" aria-label="Tìm món"></div></div><div class="menu-toolbar"><div id="filters" class="filters"></div><span id="menu-count" class="menu-count"></span></div><div id="menu-grid" class="menu-grid"></div>`;
   menuGrid();
 }
-function dishPhoto(d){const photos={'Cơm gà lá dứa':'/assets/dish-rice.jpg','Bún bò Huế':'/assets/dish-noodle.jpg','Cá hồi áp chảo':'/assets/dish-salmon.jpg','Sườn nướng mật ong':'/assets/dish-grill.jpg','Cơm nấm rau củ':'/assets/dish-veg.jpg','Gỏi cuốn tôm thịt':'/assets/dish-roll.jpg','Salad vườn nhà':'/assets/dish-salad.jpg','Khoai tây chiên':'/assets/dish-fries.jpg','Trà đào cam sả':'/assets/dish-tea.jpg','Nước chanh tươi':'/assets/dish-lemon.jpg','Cà phê sữa đá':'/assets/dish-coffee.jpg','Panna cotta xoài':'/assets/dish-dessert.jpg'};const byArt={rice:'dish-rice',noodle:'dish-noodle',fish:'dish-salmon',grill:'dish-grill',veg:'dish-veg',roll:'dish-roll',fries:'dish-fries',tea:'dish-tea',coffee:'dish-coffee',dessert:'dish-dessert'};return photos[d.name]||`/assets/${byArt[d.art]||'dish-rice'}.jpg`;}
+function dishPhoto(d){
+  const photos = {
+  "Cơm gà lá dứa": "/assets/menu/com-ga-la-dua.jpg",
+  "Bún bò Huế": "/assets/menu/bun-bo-hue.jpg",
+  "Cá hồi áp chảo": "/assets/menu/ca-hoi-ap-chao.jpg",
+  "Sườn nướng mật ong": "/assets/menu/suon-nuong-mat-ong.jpg",
+  "Cơm nấm rau củ": "/assets/menu/com-nam-rau-cu.jpg",
+  "Gỏi cuốn tôm thịt": "/assets/menu/goi-cuon-tom-thit.jpg",
+  "Salad vườn nhà": "/assets/menu/salad-vuon-nha.jpg",
+  "Khoai tây chiên": "/assets/menu/khoai-tay-chien.jpg",
+  "Trà đào cam sả": "/assets/menu/tra-dao-cam-sa.jpg",
+  "Nước chanh tươi": "/assets/menu/nuoc-chanh-tuoi.jpg",
+  "Cà phê sữa đá": "/assets/menu/ca-phe-sua-da.jpg",
+  "Panna cotta xoài": "/assets/menu/panna-cotta-xoai.jpg",
+  "Phở bò tái": "/assets/menu/pho-bo-tai.jpg",
+  "Mì Quảng tôm thịt": "/assets/menu/mi-quang-tom-thit.jpg",
+  "Bún thịt nướng": "/assets/menu/bun-thit-nuong.jpg",
+  "Gà nướng lá chanh": "/assets/menu/ga-nuong-la-chanh.jpg",
+  "Cá basa kho tộ": "/assets/menu/ca-basa-kho-to.jpg",
+  "Mì xào bò rau củ": "/assets/menu/mi-xao-bo-rau-cu.jpg",
+  "Cơm sườn bì chả": "/assets/menu/com-suon-bi-cha.jpg",
+  "Đậu hũ sốt nấm": "/assets/menu/dau-hu-sot-nam.jpg",
+  "Chả giò tôm thịt": "/assets/menu/cha-gio-tom-thit.jpg",
+  "Há cảo hấp": "/assets/menu/ha-cao-hap.jpg",
+  "Bánh xếp chiên": "/assets/menu/banh-xep-chien.jpg",
+  "Đậu hũ chiên sả": "/assets/menu/dau-hu-chien-sa.jpg",
+  "Bắp xào tôm khô": "/assets/menu/bap-xao-tom-kho.jpg",
+  "Gà popcorn": "/assets/menu/ga-popcorn.jpg",
+  "Nấm chiên giòn": "/assets/menu/nam-chien-gion.jpg",
+  "Súp bí đỏ kem tươi": "/assets/menu/sup-bi-do-kem-tuoi.jpg",
+  "Trà tắc mật ong": "/assets/menu/tra-tac-mat-ong.jpg",
+  "Trà vải hoa hồng": "/assets/menu/tra-vai-hoa-hong.jpg",
+  "Soda chanh dây": "/assets/menu/soda-chanh-day.jpg",
+  "Nước ép cam tươi": "/assets/menu/nuoc-ep-cam-tuoi.jpg",
+  "Nước ép dứa bạc hà": "/assets/menu/nuoc-ep-dua-bac-ha.jpg",
+  "Cacao nóng": "/assets/menu/cacao-nong.jpg",
+  "Bạc xỉu": "/assets/menu/bac-xiu.jpg",
+  "Chè khúc bạch": "/assets/menu/che-khuc-bach.jpg",
+  "Tàu hũ trân châu đường đen": "/assets/menu/tau-hu-tran-chau-duong-den.jpg",
+  "Kem dừa nướng": "/assets/menu/kem-dua-nuong.jpg",
+  "Bánh flan cà phê": "/assets/menu/banh-flan-ca-phe.jpg",
+  "Mochi kem trà xanh": "/assets/menu/mochi-kem-tra-xanh.jpg",
+  "Bánh chuối nướng": "/assets/menu/banh-chuoi-nuong.jpg",
+  "Trái cây theo mùa": "/assets/menu/trai-cay-theo-mua.jpg"
+};
+  return photos[d.name] || "/assets/menu/placeholder.svg";
+}
 function menuGrid(){
   $('#filters').innerHTML=[[0,'Tất cả'],...state.categories.map(c=>[c.id,c.name])].map(([id,name])=>`<button class="filter ${state.category===id?'active':''}" data-action="category" data-id="${id}">${esc(name)}<span class="filter-count">${state.menu.filter(d=>!id||d.categoryId===id).length}</span></button>`).join('');
   const dishes=state.menu.filter(d=>(!state.category||d.categoryId===state.category)&&d.name.toLocaleLowerCase('vi').includes(state.search.toLocaleLowerCase('vi')));
