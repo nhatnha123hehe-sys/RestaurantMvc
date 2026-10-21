@@ -1,7 +1,7 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Staff;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using RestaurantMvc.Services;
 using RestaurantMvc.Models;
 namespace RestaurantMvc.Areas.Staff.Controllers;
 
@@ -18,3 +18,5 @@ public class ReservationsController(ReservationService service) : ApiController
     [HttpPatch("reservations/{id:int}"),Authorize] public async Task<IActionResult> Change(int id,StatusInput b) => Ok(await service.Change(Current,id,b));
     [HttpPost("reservations/{id:int}/seat"),Authorize(Roles="staff,admin")] public async Task<IActionResult> Seat(int id) => Ok(await service.Seat(id));
 }
+
+

@@ -1,7 +1,7 @@
 using RestaurantMvc.Data;
 using RestaurantMvc.Models;
 using RestaurantMvc.Infrastructure;
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Staff;
 public class ReservationService(RestaurantDb db)
 {
     public async Task<dynamic> LockTable(int tableId)
@@ -82,3 +82,5 @@ public class ReservationService(RestaurantDb db)
         await db.Query("UPDATE Reservations SET status='seated' WHERE id=@id",new {id}); return s;
     });
 }
+
+

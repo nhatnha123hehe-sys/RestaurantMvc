@@ -2,7 +2,7 @@ using RestaurantMvc.Data;
 using RestaurantMvc.Models;
 using RestaurantMvc.Infrastructure;
 using System.Text.RegularExpressions;
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Staff;
 public class OrderService(RestaurantDb db,ReservationService reservations)
 {
     private async Task<dynamic> OwnSession(Actor actor,int id,bool locked=false)
@@ -95,3 +95,5 @@ public class OrderService(RestaurantDb db,ReservationService reservations)
         });
     }
 }
+
+

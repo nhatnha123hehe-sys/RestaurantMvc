@@ -2,7 +2,7 @@ using RestaurantMvc.Data;
 using RestaurantMvc.Models;
 using RestaurantMvc.Infrastructure;
 using System.Text.RegularExpressions;
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Shared;
 public class AccountService(RestaurantDb db)
 {
     public async Task<dynamic> Login(LoginInput b)
@@ -29,3 +29,5 @@ public class AccountService(RestaurantDb db)
         FROM Users u WHERE u.role='customer' ORDER BY u.createdAt DESC,u.id DESC
         """);
 }
+
+

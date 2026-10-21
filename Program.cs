@@ -2,7 +2,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using RestaurantMvc.Data;
-using RestaurantMvc.Services;
+using RestaurantMvc.Services.Admin;
+using RestaurantMvc.Services.Customer;
+using RestaurantMvc.Services.Shared;
+using RestaurantMvc.Services.Staff;
 using RestaurantMvc.Infrastructure;
 using System.Threading.RateLimiting;
 
@@ -54,3 +57,4 @@ app.MapControllerRoute(name:"default",pattern:"{controller=Home}/{action=Index}/
 app.Run();
 
 public partial class Program { }
+

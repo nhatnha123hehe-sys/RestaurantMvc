@@ -1,7 +1,7 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RestaurantMvc.Services;
 
 namespace RestaurantMvc.Areas.Admin.Controllers;
 
@@ -13,3 +13,5 @@ public class DashboardController(DashboardService service) : ApiController
     [HttpGet("dashboard")]
     public async Task<IActionResult> Dashboard() => Ok(await service.Summary());
 }
+
+

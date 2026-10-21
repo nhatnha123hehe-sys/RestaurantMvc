@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using Org.BouncyCastle.Crypto.Generators;
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Shared;
 public static class PasswordService
 {
     // Giữ tương thích scrypt của bản Node.js: N=16384, r=8, p=1; salt là chuỗi hex UTF-8.
@@ -18,3 +18,5 @@ public static class PasswordService
         catch(FormatException) { return false; }
     }
 }
+
+

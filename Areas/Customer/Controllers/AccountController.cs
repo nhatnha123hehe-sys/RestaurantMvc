@@ -1,10 +1,10 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Security.Claims;
-using RestaurantMvc.Services;
 using RestaurantMvc.Models;
 namespace RestaurantMvc.Areas.Customer.Controllers;
 
@@ -23,3 +23,5 @@ public class AccountController(AccountService service) : ApiController
     }
     [HttpPost("logout")] public async Task<IActionResult> Logout() { await HttpContext.SignOutAsync(); return Ok(new {ok=true}); }
 }
+
+

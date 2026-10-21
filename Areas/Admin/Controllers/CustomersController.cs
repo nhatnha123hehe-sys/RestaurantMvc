@@ -1,7 +1,7 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RestaurantMvc.Services;
 
 namespace RestaurantMvc.Areas.Admin.Controllers;
 
@@ -13,3 +13,5 @@ public class CustomersController(AccountService service) : ApiController
     [HttpGet]
     public async Task<IActionResult> List() => Ok(await service.Customers());
 }
+
+

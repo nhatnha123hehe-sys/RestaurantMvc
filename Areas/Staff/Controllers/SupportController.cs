@@ -1,8 +1,8 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Staff;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantMvc.Models;
-using RestaurantMvc.Services;
 
 namespace RestaurantMvc.Areas.Staff.Controllers;
 
@@ -26,3 +26,5 @@ public class SupportController(SupportService service) : ApiController
     [HttpPost("conversations/{id:int}/messages"), Authorize(Roles="staff,admin")]
     public async Task<IActionResult> StaffMessage(int id, SupportMessageInput input) => StatusCode(201, await service.StaffMessage(Current, id, input));
 }
+
+

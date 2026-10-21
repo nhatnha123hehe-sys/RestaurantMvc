@@ -2,7 +2,7 @@ using RestaurantMvc.Data;
 using RestaurantMvc.Models;
 using RestaurantMvc.Infrastructure;
 
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Staff;
 
 public class SupportService(RestaurantDb db)
 {
@@ -73,3 +73,5 @@ public class SupportService(RestaurantDb db)
         });
     }
 }
+
+

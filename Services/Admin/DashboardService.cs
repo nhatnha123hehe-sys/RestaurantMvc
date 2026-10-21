@@ -1,6 +1,6 @@
 using RestaurantMvc.Data;
 
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Admin;
 
 public class DashboardService(RestaurantDb db)
 {
@@ -11,3 +11,5 @@ public class DashboardService(RestaurantDb db)
         (SELECT COALESCE(SUM(total),0) FROM Invoices WHERE status='paid' AND CONVERT(date,DATEADD(hour,7,paidAt))=CONVERT(date,DATEADD(hour,7,SYSUTCDATETIME()))) todayRevenue
         """);
 }
+
+

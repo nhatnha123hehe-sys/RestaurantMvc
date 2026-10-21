@@ -1,7 +1,7 @@
 using RestaurantMvc.Data;
 using RestaurantMvc.Models;
 using RestaurantMvc.Infrastructure;
-namespace RestaurantMvc.Services;
+namespace RestaurantMvc.Services.Customer;
 public class MenuService(RestaurantDb db)
 {
     public Task<List<dynamic>> Categories() => db.Query("SELECT * FROM Categories ORDER BY id");
@@ -44,3 +44,5 @@ public class MenuService(RestaurantDb db)
         return true;
     });
 }
+
+

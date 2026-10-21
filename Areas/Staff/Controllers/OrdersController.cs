@@ -1,7 +1,7 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Staff;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using RestaurantMvc.Services;
 using RestaurantMvc.Models;
 namespace RestaurantMvc.Areas.Staff.Controllers;
 
@@ -19,3 +19,5 @@ public class OrdersController(OrderService service) : ApiController
     [HttpGet("invoices/{id:int}")] public async Task<IActionResult> Detail(int id) => Ok(await service.Detail(Current,id));
     [HttpPost("invoices/{id:int}/pay"),Authorize(Roles="staff,admin")] public async Task<IActionResult> Pay(int id,PaymentInput b) => Ok(await service.Pay(Current,id,b));
 }
+
+

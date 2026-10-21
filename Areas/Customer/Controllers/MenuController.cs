@@ -1,7 +1,7 @@
 using RestaurantMvc.Controllers;
+using RestaurantMvc.Services.Customer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using RestaurantMvc.Services;
 using RestaurantMvc.Models;
 using RestaurantMvc.Data;
 namespace RestaurantMvc.Areas.Customer.Controllers;
@@ -21,3 +21,5 @@ public class MenuController(MenuService service,RestaurantDb db) : ApiController
     [HttpPut("menu/{id:int}/recipe"),Authorize(Roles="admin")] public async Task<IActionResult> UpdateRecipe(int id,RecipeInput b) => Ok(await service.SaveRecipe(id,b,false));
     [HttpDelete("menu/{id:int}/recipe"),Authorize(Roles="admin")] public async Task<IActionResult> DeleteRecipe(int id) { await service.DeleteRecipe(id); return Ok(new {ok=true}); }
 }
+
+
