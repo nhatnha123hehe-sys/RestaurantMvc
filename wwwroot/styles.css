@@ -99,3 +99,25 @@ dialog{box-shadow:0 30px 100px rgba(23,39,15,.25);animation:dialog-in .22s ease-
 /* Trang chủ: lấp đầy khoảng trống hai bên bằng các điểm nhấn thương hiệu */
 main{position:relative;overflow:visible}.ambient-decor{position:absolute;z-index:0;inset:0 -1px auto;height:620px;pointer-events:none}.ambient-card,.ambient-orbit{position:absolute}.ambient-card{width:174px;padding:20px 18px;border:0;background:rgba(255,254,249,.78);box-shadow:0 18px 48px rgba\(39,56,35,.08),0 0 0 1px rgba(218,225,209,.55);backdrop-filter:blur(10px);color:var(--green)}.ambient-card-left{left:max(8px,calc(50% - 800px));top:188px;transform:rotate(-5deg)}.ambient-card-right{right:max(8px,calc(50% - 800px));top:284px;transform:rotate(5deg);padding:15px 17px 17px}.ambient-kicker{display:block;color:#82936f;font-size:9px;font-weight:700;letter-spacing:1.8px;margin-bottom:17px}.ambient-card strong{display:block;font-size:21px;line-height:1.17;letter-spacing:-.5px}.ambient-card-left small{display:block;color:#7f8a76;font-size:11px;line-height:1.7}.ambient-line{display:block;width:35px;height:2px;margin:16px 0 12px;background:#a7b88f}.ambient-stamp{display:grid;place-items:center;position:absolute;right:-26px;bottom:-25px;width:70px;height:70px;border:1px dashed #aebe9d;border-radius:50%;background:#f4f6ed;color:#84986e;text-align:center;font-size:17px;line-height:.95;transform:rotate(12deg)}.ambient-stamp small{font-size:8px;line-height:1.1;color:#84986e}.ambient-card-right img{display:block;width:108px;height:83px;object-fit:cover;border-radius:11px;margin:-3px auto 8px;filter:drop-shadow(3px 7px 5px rgba(50,70,40,.16))}.ambient-card-right .ambient-kicker{margin-bottom:4px}.ambient-card-right strong{font-size:17px}.ambient-card-right>small{display:block;margin-top:5px;color:#7f8a76;font-size:11px}.ambient-card-right a{display:flex;align-items:center;gap:5px;margin-top:13px;color:var(--green);font-size:11px;font-weight:700}.ambient-card-right a .icon{width:13px;height:13px}.ambient-orbit{width:140px;height:140px;border:1px solid rgba(157,177,130,.18);border-radius:50%;top:84px}.ambient-orbit-left{left:max(-70px,calc(50% - 830px))}.ambient-orbit-right{right:max(-70px,calc(50% - 830px));top:145px;width:210px;height:210px}.ambient-orbit:after{content:"";position:absolute;width:8px;height:8px;top:15px;right:20px;border-radius:50%;background:#afc18d;box-shadow:0 0 0 7px rgba(175,193,141,.16)}#app>.hero,#app>.benefits,#app>.section-top,#app>.menu-toolbar,#app>.menu-grid{position:relative;z-index:1}
 @media(max-width:1749px){.ambient-decor{display:none}}
+
+/* Dish details: consistent photo framing and two independently readable columns. */
+.dish-art { height:auto; aspect-ratio:4/3; }
+.dish-art img { object-position:center; }
+.dish:hover .dish-art img { transform:none; }
+dialog.dish-dialog { width:1180px; max-width:calc(100vw - 40px); padding:28px; }
+.dish-dialog .dish-detail { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:32px; overflow:hidden; padding:0; max-height:calc(100dvh - 150px); }
+.dish-overview { min-width:0; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding-right:4px; }
+.dish-dialog .recipe-image { display:block; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:center; margin-bottom:20px; }
+.recipe-content { min-width:0; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; padding:0 16px 8px 28px; border-left:1px solid #e3e8da; }
+.recipe-content .recipe-meta { margin-top:0; }
+.recipe-content h3 { font-size:20px; }
+.recipe-content .recipe-lines { line-height:1.8; }
+.recipe-content ol li { padding-left:6px; margin-bottom:14px; }
+.recipe-content ol li::marker { color:var(--green); font-weight:700; }
+.dish-dialog .close-dialog { flex-shrink:0; }
+@media(max-width:760px) {
+  dialog.dish-dialog { padding:20px; max-width:calc(100vw - 24px); }
+  .dish-dialog .dish-detail { display:block; overflow-y:auto; padding-right:6px; max-height:calc(100dvh - 135px); }
+  .dish-overview { overflow:visible; padding-right:0; }
+  .recipe-content { overflow:visible; padding:20px 0 0; margin-top:20px; border-left:0; border-top:1px solid #e3e8da; }
+}
