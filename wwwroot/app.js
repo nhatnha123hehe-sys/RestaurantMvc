@@ -92,7 +92,7 @@ function dishPhoto(d){
   "Bánh chuối nướng": "/assets/menu/banh-chuoi-nuong.jpg",
   "Trái cây theo mùa": "/assets/menu/trai-cay-theo-mua.jpg"
 };
-  return photos[d.name] || "/assets/menu/placeholder.svg";
+  return (photos[d.name] || "/assets/menu/placeholder.svg") + "?v=20261022";
 }
 function menuGrid(){
   $('#filters').innerHTML=[[0,'Tất cả'],...state.categories.map(c=>[c.id,c.name])].map(([id,name])=>`<button class="filter ${state.category===id?'active':''}" data-action="category" data-id="${id}">${esc(name)}<span class="filter-count">${state.menu.filter(d=>!id||d.categoryId===id).length}</span></button>`).join('');
@@ -199,7 +199,7 @@ async function render(){
     if(version===renderVersion)enhanceView();
   }catch(e){if(version===renderVersion)app.innerHTML=empty('Không tải được dữ liệu',esc(e.message),'<button class="btn" data-action="reload">Thử lại</button>');}
 }
-function modal(title,body){dialog.innerHTML=`<div class="dialog-head"><h2 id="dialog-title">${title}</h2><button class="close-dialog no-print" data-action="close-modal" aria-label="Đóng">×</button></div>${body}`;if(!dialog.open)dialog.showModal();}
+function modal(title,body,variant=''){dialog.className=variant;dialog.innerHTML=`<div class="dialog-head"><h2 id="dialog-title">${title}</h2><button class="close-dialog no-print" data-action="close-modal" aria-label="Đóng">×</button></div>${body}`;if(!dialog.open)dialog.showModal();}
 function authModal(register=false){
   modal('Chào mừng đến Bếp Nhà',`<p class="dialog-sub">Đặt bàn thuận tiện, gọi món thật dễ dàng.</p><div class="auth-tabs"><button data-action="auth-tab" class="${!register?'active':''}">Đăng nhập</button><button data-action="register-tab" class="${register?'active':''}">Tạo tài khoản</button></div><form id="auth-form" data-register="${register}">${register?'<label>Họ tên<input name="name" required maxlength="100" autocomplete="name"></label><label>Số điện thoại<input name="phone" type="tel" pattern="0[0-9]{9,10}" required autocomplete="tel"></label>':''}<label>Tên đăng nhập<input name="username" required minlength="3" maxlength="60" autocomplete="username"></label><label>Mật khẩu<input name="password" type="password" required ${register?'minlength="8"':''} maxlength="128" autocomplete="${register?'new-password':'current-password'}"></label><div class="form-error"></div><button class="btn full" type="submit">${register?'Tạo tài khoản':'Đăng nhập'} ${icon('arrow')}</button></form>${!register?'<div class="demo-box"><p>Tài khoản demo cho bài tập</p><div class="demo-logins"><button data-action="demo" data-user="khach">Khách hàng</button><button data-action="demo" data-user="nhanvien">Nhân viên</button><button data-action="demo" data-user="admin">Quản lý</button></div></div>':''}`);
 }
@@ -222,13 +222,14 @@ function cancelModal(type,id){modal(type==='reservation'?'Hủy đặt bàn':'H�
 let detailRequest=0;
 async function dishDetail(id){
   const request=++detailRequest;
-  modal('Chi tiết món','<div class="loading" role="status">Đang tải món ăn…</div>');
+  modal('Chi tiết món','<div class="loading" role="status">Đang tải món ăn…</div>','dish-dialog');
   try{
     const dish=await api('/menu/'+id);
     if(request!==detailRequest||!dialog.open)return;
     const recipe=dish.recipe,isAdmin=state.user?.role==='admin';
     const lines=(text,tag)=>`<${tag} class="recipe-lines">${text.split(/\r?\n/).filter(line=>line.trim()).map(line=>`<li>${esc(line)}</li>`).join('')}</${tag}>`;
-    modal(dish.name,`<div class="dish-detail"><img class="recipe-image" src="${dishPhoto(dish)}" alt="${esc(dish.name)}"><div class="row-between"><span class="pill">${esc(dish.categoryName)}</span><strong class="price">${money(dish.price)}</strong></div><p class="recipe-description">${esc(dish.description)}</p>${!dish.available?'<p class="notice warn">Món hiện tạm hết.</p>':''}${recipe?`<div class="recipe-meta"><span>${recipe.servings} khẩu phần</span><span>${recipe.prepMinutes} phút</span></div><h3>Nguyên liệu</h3>${lines(recipe.ingredients,'ul')}<h3>Cách chế biến</h3>${lines(recipe.instructions,'ol')}`:'<p class="notice">Nhà hàng chưa cập nhật công thức cho món này.</p>'}${isAdmin?`<div class="actions"><button class="btn" data-action="recipe-edit" data-id="${id}">${recipe?'Sửa công thức':'Thêm công thức'}</button>${recipe?`<button class="btn danger" data-action="recipe-delete" data-id="${id}">Xóa công thức</button>`:''}</div>`:!staff()?`<div class="actions"><button class="btn full" data-action="add" data-id="${id}" ${!dish.available?'disabled':''}>Thêm vào giỏ hàng</button></div>`:''}</div>`);
+    const actions=isAdmin?`<div class="actions"><button class="btn" data-action="recipe-edit" data-id="${id}">${recipe?'Sửa công thức':'Thêm công thức'}</button>${recipe?`<button class="btn danger" data-action="recipe-delete" data-id="${id}">Xóa công thức</button>`:''}</div>`:!staff()?`<div class="actions"><button class="btn full" data-action="add" data-id="${id}" ${!dish.available?'disabled':''}>Thêm vào giỏ hàng</button></div>`:'';
+    modal(esc(dish.name),`<div class="dish-detail"><section class="dish-overview"><img class="recipe-image" src="${dishPhoto(dish)}" alt="${esc(dish.name)}"><div class="row-between"><span class="pill">${esc(dish.categoryName)}</span><strong class="price">${money(dish.price)}</strong></div><p class="recipe-description">${esc(dish.description)}</p>${!dish.available?'<p class="notice warn">Món hiện tạm hết.</p>':''}${actions}</section><section class="recipe-content" tabindex="0" aria-label="Nguyên liệu và cách chế biến">${recipe?`<div class="recipe-meta"><span>${recipe.servings} khẩu phần</span><span>${recipe.prepMinutes} phút</span></div><h3>Nguyên liệu</h3>${lines(recipe.ingredients,'ul')}<h3>Cách chế biến</h3>${lines(recipe.instructions,'ol')}`:'<p class="notice">Nhà hàng chưa cập nhật công thức cho món này.</p>'}</section></div>`,'dish-dialog');
   }catch(error){if(request===detailRequest&&dialog.open)modal('Không tải được món',`<p class="notice error">${esc(error.message)}</p><button class="btn" data-action="dish-detail" data-id="${id}">Thử lại</button>`);}
 }
 async function editRecipe(id){

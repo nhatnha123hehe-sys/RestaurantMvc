@@ -25,9 +25,9 @@ Phân quyền khu vực quản lý:
 ## Đọc code trong Solution Explorer
 
 - `Program.cs`: cấu hình MVC, cookie đăng nhập, phân quyền, giới hạn đăng nhập, xử lý lỗi.
-- `Controllers/Customer/`: đăng nhập, menu và luồng khách hàng.
-- `Controllers/Staff/`: đặt bàn, nhận bàn, gọi món, hóa đơn và hộp thư hỗ trợ.
-- `Controllers/Admin/`: dashboard/doanh thu và quản lý khách hàng.
+- `Areas/Customer/Controllers/`: đăng nhập, menu và luồng khách hàng.
+- `Areas/Staff/Controllers/`: đặt bàn, nhận bàn, gọi món, hóa đơn và hộp thư hỗ trợ.
+- `Areas/Admin/Controllers/`: dashboard/doanh thu và quản lý khách hàng.
 - `Controllers/Shared/`: API nền và Razor Home dùng chung.
 - `Models/Requests.cs`: các lớp dữ liệu nhận từ giao diện và ràng buộc đầu vào.
 - `Services/Customer/`, `Services/Staff/`, `Services/Admin/`: nghiệp vụ được chia theo vai trò; mỗi service vẫn dùng kiểm tra quyền sở hữu và transaction SQL.
