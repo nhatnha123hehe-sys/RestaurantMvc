@@ -71,3 +71,21 @@ select,select option,optgroup{color-scheme:dark;background-color:#1c1b16;color:#
 .dish-image-preview{border:1px solid #57442c;border-radius:8px;overflow:hidden;margin:12px 0 18px;background:#171510}
 .dish-image-preview img{display:block;width:100%;height:170px;object-fit:contain;background:#181611}
 .dish-image-preview span{display:block;padding:8px 12px;font-size:12px;color:#ccb18b}
+
+/* Override legacy light surfaces with equally specific dark-theme selectors. */
+:root{--ring:0 0 0 3px #efa45c26}
+.data-table th{background:#2c271f;color:#d4b68e;border-bottom:1px solid #59452f}
+.data-table td{border-bottom-color:#41382b}
+.data-table .thumb{background:#181611;object-fit:cover;border:1px solid #4f402d}
+.data-table tbody tr:hover{background:#2a241b}
+.search input:focus,input:not([type=checkbox]):not([type=radio]):focus,select:focus,textarea:focus{
+  background:#262118;color:#f7ebd7;border-color:#bb854d;
+  outline:2px solid #bd874d66;outline-offset:0;box-shadow:var(--ring);
+}
+select:focus option{background:#211d17;color:#f7ebd7}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#f7ebd7;caret-color:#f7ebd7;
+  -webkit-box-shadow:0 0 0 1000px #262118 inset;
+}
+:focus-visible{outline-color:#dba163}
+.support-toggle:focus-visible,.support-option:focus-visible,.table-option input:focus-visible+span{outline-color:#dba163}
