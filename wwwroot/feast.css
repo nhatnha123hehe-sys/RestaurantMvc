@@ -21,3 +21,34 @@ main{max-width:1380px;padding:30px 36px 80px}.feast-hero{min-height:570px;border
 h1,h2,.hero h1{font-family:'Times New Roman',Georgia,serif;letter-spacing:-.3px}.signature-info strong,.feast-hero .hero-badge strong{font-family:'Times New Roman',Georgia,serif}
 
 dialog:not([open]){display:none}.sidebar,.support-conversation{background:#242017;border-color:#50412e;color:#f6d8af}.side-title{color:#b89a73}.pill.unpaid{background:#493719;color:#ffd595}
+
+/* Banner interactions never move the click target or change the photo crop at rest. */
+.feast-hero .hero-art,.signature-card,.table-invitation,.dish-art{position:relative;isolation:isolate}
+.feast-hero .hero-art>img,.signature-card>img,.table-invitation>img,.dish-art>img{transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .65s}
+.signature-info,.hero-badge,.signature-info .icon,.table-invitation .btn .icon{transition:transform .4s ease,color .3s}
+.table-invitation{transition:border-color .4s,box-shadow .4s}
+.signature-card:before,.feast-hero .hero-art:before,.table-invitation:before,.dish-art:before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;background:radial-gradient(circle 200px at var(--pointer-x,50%) var(--pointer-y,50%),#ffc4772e,transparent 75%);transition:opacity .4s}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .feast-hero .hero-art:hover>img,.signature-card:hover>img,.table-invitation:hover>img,.dish:hover .dish-art>img{transform:translate(var(--photo-x,0px),var(--photo-y,0px)) scale(1.045)}
+  .pointer-lit:before{opacity:1}
+  .signature-card:hover .signature-info{transform:translateY(-7px)}
+  .signature-card:hover .signature-info .icon,.table-invitation:hover .btn .icon{transform:translateX(5px)}
+  .feast-hero .hero-art:hover .hero-badge{transform:translateY(-5px)}
+  .table-invitation:hover{border-color:#c68d4f;box-shadow:0 18px 45px #0005}
+  .signature-card:hover>img{filter:brightness(1) saturate(1.12)}
+}
+.signature-card:focus-visible,.feast-hero .hero-art:focus-within,.table-invitation:focus-within{outline:2px solid #ffc477;outline-offset:4px}
+@media(hover:none){.signature-card:active,.dish-art:active{filter:brightness(1.12)}}
+@media(prefers-reduced-motion:reduce){
+  .feast-hero .hero-art>img,.signature-card>img,.table-invitation>img,.dish-art>img,.signature-info,.hero-badge,.signature-info .icon,.table-invitation .btn .icon,.table-invitation{transition:none}
+  .signature-card:before,.feast-hero .hero-art:before,.table-invitation:before,.dish-art:before{display:none}
+  .signature-card:hover,.dish:hover{transform:none}
+}
+.motion-choice{display:none;background:none;border:1px solid #765431;color:#edba7d;border-radius:5px;padding:6px 10px;margin-top:18px;font-size:12px}
+@media(prefers-reduced-motion:reduce){.motion-choice{display:inline-block}}
+@media(hover:hover) and (pointer:fine){
+  html.allow-banner-motion .feast-hero .hero-art:hover>img,html.allow-banner-motion .signature-card:hover>img,html.allow-banner-motion .table-invitation:hover>img,html.allow-banner-motion .dish:hover .dish-art>img{transform:translate(var(--photo-x,0px),var(--photo-y,0px)) scale(1.045);transition:transform .65s ease}
+  html.allow-banner-motion .pointer-lit:before{display:block;opacity:1}
+  html.allow-banner-motion .signature-card:hover .signature-info{transform:translateY(-7px);transition:transform .4s}
+  html.allow-banner-motion .hero-art:hover .hero-badge{transform:translateY(-5px);transition:transform .4s}
+}
