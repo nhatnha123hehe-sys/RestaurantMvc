@@ -46,6 +46,8 @@ function menuPage(){
   menuGrid();
 }
 function dishPhoto(d){
+  if(d.dishId){const current=state.menu.find(item=>item.id===d.dishId);if(current)d=current;}
+  if(typeof d.imageUrl==='string' && /^https?:\/\//i.test(d.imageUrl.trim()))return esc(d.imageUrl.trim());
   const photos = {
   "Cơm gà lá dứa": "/assets/menu/com-ga-la-dua.jpg",
   "Bún bò Huế": "/assets/menu/bun-bo-hue.jpg",
@@ -239,7 +241,20 @@ function deleteRecipe(id){
 }
 function editDish(id){
   const d=state.adminDishes?.find(d=>d.id===id)||{categoryId:state.categories[0].id,art:'rice',available:true,visible:true};
-  modal(id?'Chỉnh sửa món':'Thêm món mới',`<form id="dish-form" data-id="${id||''}"><label>Tên món<input name="name" value="${esc(d.name||'')}" required maxlength="100"></label><div class="form-grid"><label>Danh mục<select name="categoryId">${state.categories.map(c=>`<option value="${c.id}" ${c.id===d.categoryId?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label><label>Giá bán (VND)<input name="price" type="number" min="1" max="10000000" step="1" value="${d.price||''}" required></label></div><label>Mô tả<textarea name="description" maxlength="500">${esc(d.description||'')}</textarea></label><label>Hình minh họa<select name="art">${[['rice','Cơm'],['noodle','Bún / mì'],['fish','Cá'],['grill','Món nướng'],['veg','Rau / salad'],['roll','Gỏi cuốn'],['fries','Khoai chiên'],['tea','Trà / nước trái cây'],['coffee','Cà phê'],['dessert','Tráng miệng']].map(([a,l])=>`<option value="${a}" ${a===d.art?'selected':''}>${l}</option>`).join('')}</select></label><label class="check-row"><input name="available" type="checkbox" ${d.available?'checked':''}>Còn món để phục vụ</label><label class="check-row"><input name="visible" type="checkbox" ${d.visible?'checked':''}>Hiển thị trên thực đơn khách</label><div class="form-error"></div><button class="btn full" type="submit">Lưu món</button></form>`);
+  modal(id?'Chỉnh sửa món':'Thêm món mới',`<form id="dish-form" data-id="${id||''}"><label>Tên món<input name="name" value="${esc(d.name||'')}" required maxlength="100"></label><div class="form-grid"><label>Danh mục<select name="categoryId">${state.categories.map(c=>`<option value="${c.id}" ${c.id===d.categoryId?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label><label>Giá bán (VND)<input name="price" type="number" min="1" max="10000000" step="1" value="${d.price||''}" required></label></div><label>Mô tả<textarea name="description" maxlength="500">${esc(d.description||'')}</textarea></label><input type="hidden" name="art" value="${esc(d.art||'rice')}"><label>URL ảnh món ăn<input name="imageUrl" type="url" maxlength="2048" value="${esc(d.imageUrl||'')}" placeholder="https://example.com/mon-an.jpg" aria-describedby="dish-image-help"></label><p class="hint" id="dish-image-help">Dán link ảnh trực tiếp (http/https). Để trống để dùng ảnh mặc định hiện có.</p><div class="dish-image-preview"><img id="dish-image-preview" src="${dishPhoto(d)}" alt="Xem trước ảnh món" referrerpolicy="no-referrer"><span id="dish-image-status" role="status">Ảnh xem trước</span></div><label class="check-row"><input name="available" type="checkbox" ${d.available?'checked':''}>Còn món để phục vụ</label><label class="check-row"><input name="visible" type="checkbox" ${d.visible?'checked':''}>Hiển thị trên thực đơn khách</label><div class="form-error"></div><button class="btn full" type="submit">Lưu món</button></form>`);
+}
+let imagePreviewTimer;
+function updateDishImagePreview(input){
+  clearTimeout(imagePreviewTimer);
+  imagePreviewTimer=setTimeout(()=>{
+    const img=$('#dish-image-preview'),status=$('#dish-image-status');if(!img)return;
+    const value=input.value.trim();
+    if(value && (!input.checkValidity() || !/^https?:\/\//i.test(value))){status.textContent='Nhập URL ảnh bắt đầu bằng http:// hoặc https://.';return;}
+    img.onload=()=>status.textContent='Ảnh tải thành công';
+    img.onerror=()=>{status.textContent='Không tải được ảnh. Kiểm tra link ảnh hoặc quyền truy cập.';img.onerror=null;img.onload=null;img.src='/assets/menu/placeholder.svg';};
+    img.src=value || '/assets/menu/placeholder.svg';
+    status.textContent=value?'Đang tải ảnh…':'Đang dùng ảnh mặc định khi lưu.';
+  },350);
 }
 function editTable(id){const t=state.tables?.find(t=>t.id===id)||{enabled:true};modal(id?'Chỉnh sửa bàn':'Thêm bàn mới',`<form id="table-form" data-id="${id||''}"><label>Mã bàn<input name="code" value="${esc(t.code||'')}" required maxlength="20" placeholder="Ví dụ: B11"></label><label>Sức chứa<input name="capacity" type="number" min="1" max="30" step="1" value="${t.capacity||4}" required></label>${id?`<label class="check-row"><input name="enabled" type="checkbox" ${t.enabled?'checked':''}>Bàn đang phục vụ</label>`:''}<p class="hint">Không sửa bàn đang có khách. Xử lý lịch đặt còn hiệu lực trước khi giảm sức chứa hoặc ngừng phục vụ.</p><div class="form-error"></div><div class="actions"><button class="btn full" type="submit">Lưu bàn</button></div></form>`);}
 async function invoiceModal(id){
@@ -264,7 +279,7 @@ async function afterLogin(user){
   else if(state.view==='reserve'){const button=$('#reservation-form button[type=submit]');if(button)button.textContent='Gửi yêu cầu đặt bàn';}
   else render();
 }
-document.addEventListener('input',e=>{if(e.target.id==='menu-search'){state.search=e.target.value;menuGrid();}});
+document.addEventListener('input',e=>{if(e.target.name==='imageUrl'){updateDishImagePreview(e.target);return;}if(e.target.id==='menu-search'){state.search=e.target.value;menuGrid();}});
 document.addEventListener('change',e=>{
   if(e.target.id==='customer-session'){state.selectedSession=Number(e.target.value);render();}
   if(e.target.closest('#availability-form')){state.booking=null;$('#availability-results').innerHTML='';}

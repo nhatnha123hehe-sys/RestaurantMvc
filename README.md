@@ -93,3 +93,9 @@ Kiểm thử FE: `node --test tests/frontend-init.test.cjs` (8 ca, gồm đăng 
 - API: GET /api/menu/{id}; POST, PUT, DELETE /api/menu/{id}/recipe. Các thao tác ghi chỉ admin, kiểm tra phía server. Món ẩn chỉ admin xem chi tiết.
 - Kiểm chứng: 12/12 xUnit, 10/10 frontend tests. Bao gồm CRUD, quyền guest/customer/staff/admin, validation, món ẩn, escape HTML và chạy init lại sau khi xóa.
 - Đã kiểm tra trình duyệt: khách mở chi tiết; admin mở form qua Quản lý món → Công thức. Không nhập công thức thật vào database demo khi kiểm tra UI.
+
+## Ảnh món bằng URL
+
+Trong Quản lý món → Thêm/Sửa, nhập URL ảnh trực tiếp http/https để xem trước và lưu vào cột `Dishes.imageUrl`. Để trống dùng ảnh mặc định hiện có; URL riêng được ưu tiên ở menu, chi tiết và giỏ hàng. Chỉ admin được thay đổi.
+
+Database đã có từ phiên bản cũ: chạy script `Database/migrations/20261028_dish_image_url.sql` trên database cấu hình của ứng dụng, hoặc chạy lại lệnh `--init-db` để nhận schema bổ sung. Database trên máy phát triển đã được thêm cột; các món cũ được giữ nguyên.

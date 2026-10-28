@@ -9,6 +9,13 @@ function harness(fetch,stored={}){
  vm.runInContext(source,context);return {context,elements,events,storage};
 }
 const tick=()=>new Promise(r=>setImmediate(r));
+test('URL ảnh admin được ưu tiên, escape thuộc tính và đồng bộ ảnh giỏ hàng',async()=>{
+ const h=harness(async url=>({ok:true,json:async()=>data(url)}));await tick();
+ assert.equal(vm.runInContext('dishPhoto({name:"Cơm gà lá dứa",imageUrl:"https://example.com/new.jpg?a=1&b=2"})',h.context),'https://example.com/new.jpg?a=1&amp;b=2');
+ assert.match(vm.runInContext('dishPhoto({name:"Cơm gà lá dứa",imageUrl:"javascript:alert(1)"})',h.context),/^\/assets\/menu\//);
+ vm.runInContext('state.menu=[{id:99,name:"Món mới",imageUrl:"https://example.com/new.jpg"}]',h.context);
+ assert.equal(vm.runInContext('dishPhoto({dishId:99,name:"Tên lưu cũ"})',h.context),'https://example.com/new.jpg');
+});
 const data=url=>url.endsWith('/me')?null:url.endsWith('/categories')?[{id:1,name:'Món chính'}]:[{id:1,categoryId:1,name:'Cơm gà',description:'Cơm',price:79000,available:true,art:'rice',categoryName:'Món chính'}];
 test('Lỗi tải ban đầu: nút Thử lại gọi API mới và hiển thị món',async()=>{
  let fail=true,calls=0;const h=harness(async url=>{calls++;if(fail)throw Error('offline');return {ok:true,json:async()=>data(url)};});

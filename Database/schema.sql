@@ -103,3 +103,8 @@ CREATE TABLE dbo.SupportMessages (
 CREATE INDEX IX_SupportMessages_Conversation ON dbo.SupportMessages(conversationId,id);
 END;
 
+
+GO
+IF COL_LENGTH('dbo.Dishes', 'imageUrl') IS NULL
+    ALTER TABLE dbo.Dishes ADD imageUrl NVARCHAR(2048) NULL;
+GO

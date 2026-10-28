@@ -38,6 +38,25 @@ public sealed class RestaurantFixture : IAsyncLifetime
 
 public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : IClassFixture<RestaurantFixture>
 {
+    [Fact] public async Task Dish_image_url_is_saved_validated_and_admin_only()
+    {
+        using var admin=await Login("admin","admin123");
+        using var guest=fixture.Client();
+        using var staff=await Login("nhanvien","nhanvien123");
+        var payload=new {name="URL image test "+Guid.NewGuid().ToString("N"),description="Image URL",categoryId=1,price=50000,available=true,visible=true,art="rice",imageUrl="https://example.com/dish.jpg?size=large&v=2"};
+        await Expect(guest,"/menu","POST",payload,401);
+        await Expect(staff,"/menu","POST",payload,403);
+        var created=await Expect(admin,"/menu","POST",payload,201);
+        var id=Id(created);
+        Assert.Equal(payload.imageUrl,(await Expect(guest,$"/menu/{id}"))["imageUrl"]!.GetValue<string>());
+        foreach(var bad in new[]{"javascript:alert(1)","data:image/svg+xml,test","file:///test.png","https://user:password@example.com/a.jpg"})
+            await Expect(admin,$"/menu/{id}","PUT",new {payload.name,payload.description,payload.categoryId,payload.price,payload.available,payload.visible,payload.art,imageUrl=bad},400);
+        await Expect(admin,$"/menu/{id}","PUT",new {payload.name,payload.description,payload.categoryId,payload.price,payload.available,payload.visible,payload.art,imageUrl="https://example.com/new.jpg"});
+        Assert.Equal("https://example.com/new.jpg",(await Expect(guest,$"/menu/{id}"))["imageUrl"]!.GetValue<string>());
+        await Expect(admin,$"/menu/{id}","PUT",new {payload.name,payload.description,payload.categoryId,payload.price,payload.available,payload.visible,payload.art,imageUrl=""});
+        Assert.Null((await Expect(guest,$"/menu/{id}"))["imageUrl"]);
+        await fixture.Sql("DELETE Dishes WHERE id=@id",new {id});
+    }
     private static async Task<(int Status,JsonNode Body)> Call(HttpClient c,string url,string method="GET",object? body=null)
     {
         using var request=new HttpRequestMessage(new HttpMethod(method),"/api"+url);

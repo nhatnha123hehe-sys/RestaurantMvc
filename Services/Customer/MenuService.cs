@@ -10,9 +10,14 @@ public class MenuService(RestaurantDb db)
     {
         b.Name=Rules.Text(b.Name,"Tên món"); b.Description=Rules.Text(b.Description,"Mô tả",500,false);
         Rules.Require(new[]{"rice","noodle","fish","grill","veg","roll","fries","tea","coffee","dessert"}.Contains(b.Art),"Hình minh họa không hợp lệ.");
+        b.ImageUrl = string.IsNullOrWhiteSpace(b.ImageUrl) ? null : b.ImageUrl.Trim();
+        if (b.ImageUrl is not null)
+            Rules.Require(b.ImageUrl.Length <= 2048 && Uri.TryCreate(b.ImageUrl, UriKind.Absolute, out var imageUri)
+                && (imageUri.Scheme == Uri.UriSchemeHttps || imageUri.Scheme == Uri.UriSchemeHttp)
+                && string.IsNullOrEmpty(imageUri.UserInfo), "URL ảnh phải là địa chỉ http:// hoặc https:// hợp lệ (tối đa 2048 ký tự).");
         if(await db.One("SELECT id FROM Categories WHERE id=@CategoryId",b)==null) throw new BusinessException("Danh mục không tồn tại.");
-        var args=new {id,b.Name,b.Description,b.CategoryId,b.Price,b.Available,b.Visible,b.Art};
-        var row=await db.One(id==null ? "INSERT Dishes(categoryId,name,description,price,available,visible,art) OUTPUT inserted.* VALUES(@CategoryId,@Name,@Description,@Price,@Available,@Visible,@Art)" : "UPDATE Dishes SET categoryId=@CategoryId,name=@Name,description=@Description,price=@Price,available=@Available,visible=@Visible,art=@Art OUTPUT inserted.* WHERE id=@id",args);
+        var args=new {id,b.Name,b.Description,b.CategoryId,b.Price,b.Available,b.Visible,b.Art,b.ImageUrl};
+        var row=await db.One(id==null ? "INSERT Dishes(categoryId,name,description,price,available,visible,art,imageUrl) OUTPUT inserted.* VALUES(@CategoryId,@Name,@Description,@Price,@Available,@Visible,@Art,@ImageUrl)" : "UPDATE Dishes SET categoryId=@CategoryId,name=@Name,description=@Description,price=@Price,available=@Available,visible=@Visible,art=@Art,imageUrl=@ImageUrl OUTPUT inserted.* WHERE id=@id",args);
         if(row==null) throw new BusinessException("Không tìm thấy món.",404); return row;
     }
 

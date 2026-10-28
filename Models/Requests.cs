@@ -12,6 +12,7 @@ public class DishInput
     [Required] public bool? Available { get; set; }
     [Required] public bool? Visible { get; set; }
     public string Art { get; set; } = "rice";
+    [MaxLength(2048)] public string? ImageUrl { get; set; }
 }
 public class TableInput
 {
