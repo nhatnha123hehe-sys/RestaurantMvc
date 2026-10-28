@@ -1,68 +1,85 @@
-# Bài thực hành số 3 — Triển khai dự án trên GitHub
+# Bài thực hành số 3 theo Product Backlog Bếp Nhà
 
-Người thực hiện: **Lê Minh Nhật**, tài khoản **nhatnha123hehe-sys**. Đây là bài **cá nhân**, áp dụng vào source web Bếp Nhà đã có. Không chia cho David, Ruby hoặc một thành viên giả định. Có sử dụng trợ lý AI để hỗ trợ thực hiện; sinh viên cần đọc hiểu thay đổi và quy trình trước khi trình bày.
+Bản này **thay thế toàn bộ kế hoạch tự đề xuất cũ** sau khi người dùng bổ sung file Product Backlog và xác nhận chuyển mẫu bán điện thoại sang website nhà hàng, làm bài cá nhân. Người thực hiện: **Lê Minh Nhật**, GitHub **nhatnha123hehe-sys**.
 
-Repository: https://github.com/nhatnha123hehe-sys/RestaurantMvc
+## Nguồn và quy tắc chuyển đổi
 
-## Phạm vi và thời gian
+Đã đọc đủ bốn sheet của `Lab1_PhamMinhThanh_24DH113381.xlsx`: Project Information, Team, Product backlog, Sprint backlog. Đã đối chiếu lại `Bài thực hành số 3.docx` về milestone, labels, issue, PR và lọc tiến độ.
 
-Đề cho thời gian thực hiện 2 tuần. Kế hoạch tự đề xuất là 22/10/2026–04/11/2026; đây không phải hạn nộp được giảng viên xác nhận. Các ngày năm 2014 và ứng dụng blog trong đề là ví dụ hướng dẫn.
+Mẫu có 14 story, tổng 54 điểm. Sprint 1 chọn Story 1, 4, 2, 5, 6, tổng 14 điểm. Giữ mã story và điểm **ước lượng kế thừa**; không gọi chúng là số ngày hay số điểm thực tế của nhà hàng.
 
-Milestone: [Sprint 1 - Bài thực hành 3 cá nhân](https://github.com/nhatnha123hehe-sys/RestaurantMvc/milestone/1).
+Các điều chỉnh đã nêu rõ trong từng issue:
 
-Web nền tảng đã có đăng ký, đăng nhập, đặt bàn, gọi món, hóa đơn, công thức, dashboard và hỗ trợ khách hàng. Không tính các chức năng đã có là code mới của sprint này.
+- Điện thoại/giao hàng chuyển thành món ăn, đặt bàn và lượt phục vụ.
+- Đơn vãng lai đổi thành đặt bàn/gọi món sau đăng nhập, theo quy tắc người dùng đã yêu cầu cho Bếp Nhà.
+- Tạo tài khoản tự động từ giao hàng đổi thành đăng ký chủ động.
+- Email định danh đổi thành username theo code hiện có; chưa triển khai đăng nhập email.
+- Khách chọn COD đổi thành nhân viên/quản lý ghi nhận tiền mặt hoặc chuyển khoản tại nhà hàng; không phải tích hợp cổng thanh toán.
+- Team chỉ có một người; không giữ tên, vai trò hoặc phân công hai người của mẫu.
+- Không chép ngày cũ và ngày Excel lỗi. Deadline **29/10/2026** do người dùng xác nhận. Khoảng 28–29/10 là kế hoạch đối chiếu lần này, không giả lập hai tuần làm việc.
 
-## Công việc trong sprint
+## Bản backlog hiện dùng
 
-| Issue | Nội dung | Người thực hiện | Điểm |
-|---|---|---|---|
-| [#1](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/1) | Cập nhật tài liệu Areas, quy trình cá nhân và mẫu issue/PR | Lê Minh Nhật | 1 |
-| [#2](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/2) | Đồng nhất ảnh và chia chi tiết món thành hai cột | Lê Minh Nhật | 3 |
-| [#3](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/3) | GitHub Actions kiểm tra JavaScript và test frontend | Lê Minh Nhật | 1 |
+[File Excel Bếp Nhà cá nhân](backlog/Product_Backlog_BepNha_LeMinhNhat.xlsx) gồm 5 sheet: thông tin dự án, cá nhân, Product backlog, Sprint backlog và đối chiếu code. Các cột ngày thực hiện/điểm thực tế để trống vì không có dữ liệu gốc.
 
-Tổng kế hoạch: 5 điểm. Điểm thể hiện độ phức tạp tương đối, không phải số ngày. Tạo đủ nhãn point:0, point:1, point:3, point:7 theo ví dụ; chỉ gán một nhãn điểm cho mỗi task.
+| Story | Chức năng | Điểm | Phạm vi | Kết quả đối chiếu | Issue |
+|---|---|---:|---|---|---|
+| US01 | Xem thực đơn và chi tiết món ăn | 2 | Sprint 1 | Đối chiếu đạt | [#6](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/6) |
+| US02 | Đăng nhập để đặt bàn và gọi món theo lượt bàn | 5 | Sprint 1 | Đối chiếu đạt | [#7](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/7) |
+| US03 | Đăng ký tài khoản khách hàng | 3 | Backlog | New | [#8](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/8) |
+| US04 | Đăng nhập bằng tên đăng nhập và mật khẩu | 2 | Sprint 1 | Đối chiếu đạt | [#9](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/9) |
+| US05 | Cập nhật hồ sơ và giữ nguyên tên đăng nhập | 2 | Sprint 1 | New | [#10](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/10) |
+| US06 | Ghi nhận thanh toán tiền mặt hoặc chuyển khoản | 3 | Sprint 1 | Đối chiếu đạt | [#11](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/11) |
+| US07 | Xem lịch đặt bàn, đơn món và hóa đơn của mình | 3 | Backlog | New | [#12](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/12) |
+| US08 | Hủy đặt bàn khi đang chờ hoặc đã xác nhận | 3 | Backlog | New | [#13](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/13) |
+| US09 | Đánh giá món sau khi hoàn tất bữa ăn | 3 | Backlog | New | [#14](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/14) |
+| US10 | Lọc danh sách đặt bàn và đơn món | 5 | Backlog | New | [#15](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/15) |
+| US11 | Thông báo khi có đặt bàn hoặc đơn món mới | 5 | Backlog | New | [#16](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/16) |
+| US12 | Tạo khuyến mãi theo món hoặc hạng khách | 8 | Backlog | New | [#17](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/17) |
+| US13 | Tạo khảo sát chất lượng phục vụ | 5 | Backlog | New | [#18](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/18) |
+| US14 | Phân hạng khách theo chi tiêu đã thanh toán | 5 | Backlog | New | [#19](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/19) |
 
-## Quy trình thực hiện
+## Sprint 1 và kết quả
 
-1. Tạo milestone có mục tiêu và deadline.
-2. Tạo labels New, In progress, Done, bug, các nhãn điểm và Le Minh Nhat.
-3. Tạo issue có tiêu chí hoàn thành, assignee là tài khoản cá nhân và milestone.
-4. Đổi nhãn New thành In progress khi bắt đầu làm.
-5. Làm thay đổi trên nhánh `codex/lab3-individual-sprint`, commit và push.
-6. Mở PR vào main; dùng `Closes #1`, `Closes #2`, `Closes #3` để liên kết các task thực sự được giải quyết. Không dùng `Solve` vì không phải từ khóa tự đóng issue.
-7. Kiểm tra diff và kết quả kiểm thử. Bài cá nhân dùng tự rà soát, không giả lập người review thứ hai.
-8. Sau khi merge và xác nhận kết quả, đổi nhãn thành Done, đóng các issue và tổng kết milestone.
+[Milestone Sprint 1](https://github.com/nhatnha123hehe-sys/RestaurantMvc/milestone/2), hạn **29/10/2026**. Toàn bộ issue giao cho tài khoản cá nhân.
 
-## Theo dõi tiến độ bằng filter
+- US01 (2), US04 (2), US02 (5), US06 (3): đã đối chiếu bằng code và bộ test liên quan; 12 điểm.
+- **US05 (2): New, chưa có API/màn hình cập nhật hồ sơ.** Không đánh dấu Done, không đóng sprint.
+- Tổng: **4/5 story, 12/14 điểm**, tương đương 85,7% điểm kế hoạch đã đối chiếu. Đây là mức độ đáp ứng của code hiện có, không phải năng suất viết code mới trong hai ngày.
+- Chín story ngoài sprint giữ New/chưa nghiệm thu. Một số đã có code một phần; đánh giá, khuyến mãi, khảo sát và phân hạng chưa có.
 
-Trong ô tìm kiếm Issues của repository, dùng các truy vấn sau:
+Kiểm chứng chạy lại ngày 28/10/2026:
 
 ```text
-is:issue milestone:"Sprint 1 - Bài thực hành 3 cá nhân"
-is:issue assignee:nhatnha123hehe-sys label:"In progress"
-is:issue assignee:nhatnha123hehe-sys label:Done
-is:issue label:bug
-is:issue milestone:"Sprint 1 - Bài thực hành 3 cá nhân" is:closed
+dotnet test RestaurantMvc.sln --no-build --no-restore --nologo
+Passed: 13; Failed: 0
+node --test tests/frontend-init.test.cjs
+Passed: 11; Failed: 0
 ```
 
-[Xem tất cả task cá nhân](https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues?q=is%3Aissue%20assignee%3Anhatnha123hehe-sys).
+Test .NET dùng database GUID riêng do fixture tạo; không đánh dấu tất cả 14 story đạt chỉ vì bộ test hiện có chạy qua. Chi tiết file/controller và điều kiện nghiệm thu nằm ở sheet Doi chieu code và từng issue.
 
-## Minh chứng và giới hạn
+## Thực hiện bài GitHub
 
-Milestone, lịch sử nhãn trên issue, commit, PR và GitHub Actions là minh chứng thực tế. Thời gian hoàn thành được ghi theo lúc thực hiện, không dựng lại lịch sử kéo dài đủ 2 tuần.
+1. Milestone có mục tiêu, deadline; task trong sprint có cùng milestone, task còn lại ở Product Backlog.
+2. Labels: Product Backlog, Sprint 1, người thực hiện, point:2/3/5/8, New/In progress/Done và bug có sẵn.
+3. Mỗi US là một issue có actor, tiêu chí, nguồn mẫu, thay đổi nghiệp vụ và phần code còn thiếu.
+4. Các US được kiểm chứng đi qua New → In progress → Done và liên kết PR đối chiếu. PR tài liệu này không tuyên bố mới viết toàn bộ code nghiệp vụ.
+5. US05 và các story chưa đủ tiêu chí giữ New; cập nhật tiếp theo tiến độ thực tế.
+6. Sprint còn mở; phần này là báo cáo tiến độ, chưa phải tổng kết hoàn tất sprint.
 
-Workflow frontend không cần SQL Server; kiểm thử frontend dùng API giả lập nên không chứng minh nghiệp vụ SQL hay toàn bộ website đã đúng. Kiểm thử trình duyệt và kết quả thực thi được bổ sung trong tổng kết sprint.
+Filter trong Issues của repository:
 
-## Kiểm chứng giao diện ngày 22/10/2026
+```text
+is:issue label:"Product Backlog" -label:Superseded
+is:issue milestone:"Sprint 1 - Bếp Nhà - Backlog cá nhân"
+is:issue assignee:nhatnha123hehe-sys label:"In progress"
+is:issue assignee:nhatnha123hehe-sys label:New label:"Sprint 1"
+is:issue label:Done label:"Sprint 1"
+is:issue label:bug
+```
 
-- `node --check wwwroot/app.js`: đạt.
-- `node --test tests/frontend-init.test.cjs`: 10/10 đạt.
-- `git diff --check`: không có lỗi whitespace.
-- Trình duyệt 1440×900: cửa sổ chi tiết có ảnh bên trái, công thức bên phải.
-- DOM xác nhận menu và chi tiết dùng cùng URL ảnh, cùng tỉ lệ 4:3.
-- Trình duyệt 390×844: xếp dọc, cuộn tới bước cuối của công thức Bún bò Huế.
-- Mở đăng nhập sau chi tiết: class riêng của modal món đã được xóa.
-- Không sửa dữ liệu công thức và không chạy lại kiểm thử tích hợp SQL trong sprint này.
+## Nội dung cũ đã bỏ khỏi bài chính
 
-![Chi tiết món trên desktop](lab3-detail-desktop.png)
-![Cuộn công thức trên điện thoại](lab3-detail-mobile.png)
+Issues #1–#3 và milestone #1 được gắn ĐÃ THAY THẾ; không còn là Product Backlog để nộp. PR #4 là lịch sử thay đổi code/tài liệu cũ, đã ghi chú kế hoạch bị thay thế. Giữ commit và code đang chạy để tránh mất chức năng; không xóa lịch sử rồi giả tạo lại thời điểm phát triển.
+PR đối chiếu mới liên kết riêng US01, US02, US04, US06; US05 giữ mở. Không liên kết PR cũ #4 để đóng các story mới. Lịch sử issue mới thể hiện bước đối chiếu New → In progress → Done, không giả lập lịch sử phát triển đã xảy ra trong quá khứ.

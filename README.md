@@ -99,3 +99,6 @@ Kiểm thử FE: `node --test tests/frontend-init.test.cjs` (8 ca, gồm đăng 
 Trong Quản lý món → Thêm/Sửa, nhập URL ảnh trực tiếp http/https để xem trước và lưu vào cột `Dishes.imageUrl`. Để trống dùng ảnh mặc định hiện có; URL riêng được ưu tiên ở menu, chi tiết và giỏ hàng. Chỉ admin được thay đổi.
 
 Database đã có từ phiên bản cũ: chạy script `Database/migrations/20261028_dish_image_url.sql` trên database cấu hình của ứng dụng, hoặc chạy lại lệnh `--init-db` để nhận schema bổ sung. Database trên máy phát triển đã được thêm cột; các món cũ được giữ nguyên.
+
+## Bài thực hành 3 cá nhân
+Kế hoạch chính hiện dùng [Product Backlog Bếp Nhà](docs/bai-thuc-hanh-3.md), chuyển từ file mẫu theo xác nhận của người dùng; thay thế milestone/issue tự đề xuất trước đây. Sprint 1 hạn 29/10/2026, còn US05 cập nhật hồ sơ chưa hoàn tất.
