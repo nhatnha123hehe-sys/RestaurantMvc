@@ -13,6 +13,8 @@ Mô tả việc cần làm và phần code liên quan.
 - [ ] Ghi nhận cách kiểm thử và kết quả thực tế
 
 ## Kế hoạch
-Chọn milestone, một nhãn điểm (point:0/1/3/7), nhãn Le Minh Nhat.
+Ghi mã US và nguồn từ Product Backlog. Chọn milestone nếu task thuộc sprint.
+Chọn một nhãn điểm theo backlog (point:2/3/5/8), nhãn Le Minh Nhat.
 Điểm là độ phức tạp tương đối, không phải số giờ hoặc số ngày.
 Chuyển New → In progress → Done; mỗi thời điểm chỉ có một nhãn trạng thái.
+Không ghi Done nếu mới có code một phần hoặc chưa có bằng chứng đáp ứng tiêu chí.
