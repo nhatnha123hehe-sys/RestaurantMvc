@@ -13,6 +13,9 @@ jobs:
         with:
           node-version: '22'
       - name: Check JavaScript syntax
-        run: node --check wwwroot/app.js
+        run: |
+          node --check wwwroot/app.js
+          node --check wwwroot/banner-motion.js
+          node --check wwwroot/restaurant-motion.js
       - name: Run frontend regression tests
         run: node --test tests/frontend-init.test.cjs

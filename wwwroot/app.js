@@ -10,15 +10,11 @@ const iconPaths={cart:'M3 3h2l2 12h11l3-9H6M9 21h.01M18 21h.01',clock:'M12 8v5l3
 const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${iconPaths[name]||iconPaths.menu}"/></svg>`;
 let toastTimer,renderVersion=0;
 let ready=false,initializing=false,initializationError=null;
-let revealObserver;
+
 function toast(message,error=false){const t=$('#toast');t.textContent=message;t.className='show'+(error?' error':'');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.className='',5000);}
 function enhanceView(){
   if(typeof document.querySelectorAll!=='function')return;
-  const targets=[...document.querySelectorAll('#app > *,#app .dish,#app .panel,#app .section-top,#app .benefits')];
-  targets.forEach((el,index)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',`${Math.min(index,9)*45}ms`);});
-  revealObserver?.disconnect();
-  if('IntersectionObserver' in window){revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -30px'});targets.forEach(el=>revealObserver.observe(el));}
-  else targets.forEach(el=>el.classList.add('is-visible'));
+  window.dispatchEvent(new Event('bepnha:render'));
 }
 function updateChrome(){document.querySelector('.header')?.classList?.toggle('scrolled',window.scrollY>8);$('#back-to-top')?.classList?.toggle('visible',window.scrollY>520);}
 async function api(path,method='GET',data){

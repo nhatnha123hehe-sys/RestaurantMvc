@@ -1,0 +1,20 @@
+/* Keyframes are provided by Animate.css 4.1.1 (MIT, vendored in lib/animate-css). */
+.motion-pending{opacity:0}
+.motion-play{
+  animation-name:var(--motion-name) !important;
+  animation-duration:.65s !important;
+  animation-delay:var(--motion-delay,0ms) !important;
+  animation-timing-function:cubic-bezier(.2,.7,.2,1) !important;
+  animation-iteration-count:1 !important;
+  animation-fill-mode:both;
+}
+dialog.motion-play{animation-duration:.28s !important;transform-origin:center}
+.cart-btn.motion-play{animation-duration:.4s !important}
+.ripple-host{position:relative;overflow:hidden;isolation:isolate}
+.button-ripple{position:absolute;border-radius:50%;background:currentColor;opacity:0;pointer-events:none;animation:button-ripple .65s ease-out !important}
+@keyframes button-ripple{from{transform:scale(0);opacity:.26}to{transform:scale(1);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  html:not(.allow-banner-motion) .motion-play{animation:none !important}
+  html:not(.allow-banner-motion) .motion-pending{opacity:1}
+  html:not(.allow-banner-motion) .button-ripple{display:none}
+}
