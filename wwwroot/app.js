@@ -295,7 +295,7 @@ document.addEventListener('click',async e=>{
     if(action==='support-chat'){const menu=$('#support-menu'),toggle=$('.support-toggle');menu?.setAttribute('hidden','');toggle?.setAttribute('aria-expanded','false');supportChatModal();return;}
     if(action==='support-open'){await staffChatModal(id);return;}
     if(action==='scroll-menu'){document.querySelector('#our-menu')?.scrollIntoView({behavior:'smooth',block:'start'});return;}
-    if(action==='back-to-top'){window.scrollTo({top:0,behavior:'smooth'});return;}
+    if(action==='back-to-top')return; // scroll-top.js handles cancellable easing.
     if(action==='dish-detail')await dishDetail(id);
     else if(action==='recipe-edit')await editRecipe(id);
     else if(action==='recipe-delete')deleteRecipe(id);

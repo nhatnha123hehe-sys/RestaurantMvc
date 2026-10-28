@@ -17,5 +17,6 @@ jobs:
           node --check wwwroot/app.js
           node --check wwwroot/banner-motion.js
           node --check wwwroot/restaurant-motion.js
+          node --check wwwroot/scroll-top.js
       - name: Run frontend regression tests
         run: node --test tests/frontend-init.test.cjs

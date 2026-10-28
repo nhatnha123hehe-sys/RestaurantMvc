@@ -89,3 +89,18 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 }
 :focus-visible{outline-color:#dba163}
 .support-toggle:focus-visible,.support-option:focus-visible,.table-option input:focus-visible+span{outline-color:#dba163}
+
+/* Bright, warm hover treatment for menu cards. */
+.dish{position:relative;isolation:isolate;transform-origin:center bottom}
+.dish:before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;background:linear-gradient(135deg,#ffc55a20,transparent 40%,#ff675f18);transition:opacity .3s}
+@media(hover:hover) and (pointer:fine){
+  .dish:hover,.dish:focus-within{z-index:3;border-color:#ffc16b;box-shadow:0 0 0 1px #ffbd674d,0 0 30px #ff9c3c40,0 20px 45px #0008;transform:translateY(-9px) scale(1.02)}
+  .dish:hover:before,.dish:focus-within:before{opacity:1}
+  .dish:hover h3 button,.dish:hover .price{color:#ffce84;text-shadow:0 0 16px #ffb45966}
+  .dish:hover .add-btn{background:#ffb55e;border-color:#ffdb92;color:#281708;box-shadow:0 0 18px #ffac5066}
+  .dish:hover .dish-art img{filter:brightness(1.12) saturate(1.18)}
+  .back-to-top:hover{transform:translateY(-5px);background:#ffc87e;box-shadow:0 0 22px #ffab5066}
+}
+.back-to-top.scrolling{box-shadow:0 0 0 6px #f5a65b25,0 0 26px #f5a65b66}
+@media(prefers-reduced-motion:no-preference){.dish{transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s,border-color .32s}.dish .price,.dish h3 button,.dish .add-btn{transition:color .25s,background .25s,box-shadow .25s}}
+html.allow-banner-motion .dish{transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s,border-color .32s !important}
