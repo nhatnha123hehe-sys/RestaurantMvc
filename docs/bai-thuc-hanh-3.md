@@ -15,7 +15,7 @@ Các điều chỉnh đã nêu rõ trong từng issue:
 - Tạo tài khoản tự động từ giao hàng đổi thành đăng ký chủ động.
 - Email định danh đổi thành username theo code hiện có; chưa triển khai đăng nhập email.
 - Khách chọn COD đổi thành nhân viên/quản lý ghi nhận tiền mặt hoặc chuyển khoản tại nhà hàng; không phải tích hợp cổng thanh toán.
-- Team chỉ có một người; không giữ tên, vai trò hoặc phân công hai người của mẫu.
+- Đồ án giữ nhóm 2 thành viên; Lab 3 là bài nộp cá nhân của Lê Minh Nhật. Danh tính, tài khoản và phân công thành viên còn lại cần xác nhận theo đồ án, không tự sao chép từ mẫu bán điện thoại.
 - Không chép ngày cũ và ngày Excel lỗi. Deadline **29/10/2026** do người dùng xác nhận. Khoảng 28–29/10 là kế hoạch đối chiếu lần này, không giả lập hai tuần làm việc.
 
 ## Bản backlog hiện dùng
@@ -83,3 +83,14 @@ is:issue label:bug
 
 Issues #1–#3 và milestone #1 được gắn ĐÃ THAY THẾ; không còn là Product Backlog để nộp. PR #4 là lịch sử thay đổi code/tài liệu cũ, đã ghi chú kế hoạch bị thay thế. Giữ commit và code đang chạy để tránh mất chức năng; không xóa lịch sử rồi giả tạo lại thời điểm phát triển.
 PR đối chiếu mới liên kết riêng US01, US02, US04, US06; US05 giữ mở. Không liên kết PR cũ #4 để đóng các story mới. Lịch sử issue mới thể hiện bước đối chiếu New → In progress → Done, không giả lập lịch sử phát triển đã xảy ra trong quá khứ.
+
+
+## Cập nhật phạm vi nhóm và bài nộp cá nhân — 29/10/2026
+
+Đồ án Bếp Nhà là sản phẩm của nhóm 2 người. Lab 3 vẫn là bài nộp cá nhân của Lê Minh Nhật; người nộp tổng hợp yêu cầu và minh chứng từ đồ án chung. Không dùng việc mọi issue đang giao Nhật để kết luận Nhật đã viết toàn bộ sản phẩm.
+
+- Lê Minh Nhật: thành viên đã xác định; GitHub `nhatnha123hehe-sys`. Vai trò và phần code thực tế cần ghi theo phân công đã thống nhất.
+- Thành viên thứ hai: giữ vị trí trong nhóm, chờ xác nhận họ tên, MSSV, GitHub và phần việc. File mẫu ghi Phạm Minh Thành nhưng chưa đủ cơ sở coi đó là thành viên chính thức của đồ án Bếp Nhà.
+- File Excel hiện liên kết được lập cho bài cá nhân trước yêu cầu cập nhật này; sheet Team chưa phản ánh nhóm 2 người. Khi chốt danh sách sẽ sửa sheet Team và giữ riêng thông tin người nộp Lab 3.
+
+Xem [Danh sách nội dung cần hoàn thiện và tài liệu cần bổ sung](lab3-noi-dung-can-hoan-thien.md). Phần cập nhật này được ưu tiên khi đọc các mô tả cũ về nhóm chỉ có một người.
