@@ -6,8 +6,8 @@ Cập nhật 29/10/2026. Đồ án nhóm 2 người, bài Lab 3 nộp cá nhân 
 
 | Thành viên | Thông tin đã có | Cần bổ sung |
 |---|---|---|
-| Lê Minh Nhật | GitHub nhatnha123hehe-sys | MSSV, phần việc thực tế |
-| Thành viên thứ hai | Đồ án có 2 người | Xác nhận tên, MSSV, GitHub, phần việc thực tế |
+| Lê Minh Nhật | GitHub nhatnha123hehe-sys 
+| Phạm Minh Thành 
 
 Không gán vai trò Scrum Master/Product Owner hoặc tác giả code khi chưa có phân công. Giữ bài Lab cá nhân và ghi công đóng góp của cả nhóm trong đồ án.
 
