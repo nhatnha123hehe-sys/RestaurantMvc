@@ -1,0 +1,266 @@
+{
+  "verifiedOn": "2026-10-29",
+  "issues": [
+    {
+      "number": 19,
+      "title": "[US14] Phân hạng khách theo chi tiêu đã thanh toán",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:5",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/19"
+    },
+    {
+      "number": 18,
+      "title": "[US13] Tạo khảo sát chất lượng phục vụ",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:5",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/18"
+    },
+    {
+      "number": 17,
+      "title": "[US12] Tạo khuyến mãi theo món hoặc hạng khách",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:8",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/17"
+    },
+    {
+      "number": 16,
+      "title": "[US11] Thông báo khi có đặt bàn hoặc đơn món mới",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:5",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/16"
+    },
+    {
+      "number": 15,
+      "title": "[US10] Lọc danh sách đặt bàn và đơn món",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:5",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/15"
+    },
+    {
+      "number": 14,
+      "title": "[US09] Đánh giá món sau khi hoàn tất bữa ăn",
+      "state": "open",
+      "labels": [
+        "New",
+        "point:3",
+        "Le Minh Nhat",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/14"
+    },
+    {
+      "number": 13,
+      "title": "[US08] Hủy đặt bàn khi đang chờ hoặc đã xác nhận",
+      "state": "open",
+      "labels": [
+        "New",
+        "point:3",
+        "Le Minh Nhat",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/13"
+    },
+    {
+      "number": 12,
+      "title": "[US07] Xem lịch đặt bàn, đơn món và hóa đơn của mình",
+      "state": "open",
+      "labels": [
+        "New",
+        "point:3",
+        "Le Minh Nhat",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/12"
+    },
+    {
+      "number": 11,
+      "title": "[US06] Ghi nhận thanh toán tiền mặt hoặc chuyển khoản",
+      "state": "closed",
+      "labels": [
+        "Done",
+        "point:3",
+        "Le Minh Nhat",
+        "Product Backlog",
+        "Sprint 1"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": 2,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/11"
+    },
+    {
+      "number": 10,
+      "title": "[US05] Cập nhật hồ sơ và giữ nguyên tên đăng nhập",
+      "state": "open",
+      "labels": [
+        "New",
+        "Le Minh Nhat",
+        "point:2",
+        "Product Backlog",
+        "Sprint 1"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": 2,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/10"
+    },
+    {
+      "number": 9,
+      "title": "[US04] Đăng nhập bằng tên đăng nhập và mật khẩu",
+      "state": "closed",
+      "labels": [
+        "Done",
+        "Le Minh Nhat",
+        "point:2",
+        "Product Backlog",
+        "Sprint 1"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": 2,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/9"
+    },
+    {
+      "number": 8,
+      "title": "[US03] Đăng ký tài khoản khách hàng",
+      "state": "open",
+      "labels": [
+        "New",
+        "point:3",
+        "Le Minh Nhat",
+        "Product Backlog"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": null,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/8"
+    },
+    {
+      "number": 7,
+      "title": "[US02] Đăng nhập để đặt bàn và gọi món theo lượt bàn",
+      "state": "closed",
+      "labels": [
+        "Done",
+        "Le Minh Nhat",
+        "point:5",
+        "Product Backlog",
+        "Sprint 1"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": 2,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/7"
+    },
+    {
+      "number": 6,
+      "title": "[US01] Xem thực đơn và chi tiết món ăn",
+      "state": "closed",
+      "labels": [
+        "Done",
+        "Le Minh Nhat",
+        "point:2",
+        "Product Backlog",
+        "Sprint 1"
+      ],
+      "assignees": [
+        "nhatnha123hehe-sys"
+      ],
+      "milestone": 2,
+      "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/issues/6"
+    }
+  ],
+  "labels": [
+    "accessibility",
+    "bug",
+    "documentation",
+    "Done",
+    "duplicate",
+    "enhancement",
+    "good first issue",
+    "help wanted",
+    "In progress",
+    "invalid",
+    "Le Minh Nhat",
+    "New",
+    "point:0",
+    "point:1",
+    "point:2",
+    "point:3",
+    "point:5",
+    "point:7",
+    "point:8",
+    "Product Backlog",
+    "question",
+    "Sprint 1",
+    "Superseded",
+    "wontfix"
+  ],
+  "pullRequest": {
+    "url": "https://github.com/nhatnha123hehe-sys/RestaurantMvc/pull/20",
+    "body": "Kế hoạch cũ có ba task tự đề xuất trước khi nhận file Product Backlog nên không đúng nguồn. Thay bằng 14 user story chuyển từ mẫu sang Bếp Nhà theo xác nhận của người dùng; giữ 54 điểm ước lượng kế thừa và chọn US01/04/02/05/06 cho Sprint 1 (14 điểm), deadline 29/10/2026 do người dùng chốt.\n\nĐây là đối chiếu và tài liệu hóa code đã có, không tuyên bố mới phát triển các chức năng trong PR. US01/02/04/06 đáp ứng qua code và test liên quan; US05 cập nhật hồ sơ chưa có nên giữ New. Sprint còn mở. Các chức năng mở rộng chưa có không được đánh Done.\n\nCloses #6\nCloses #7\nCloses #9\nCloses #11\n\nThêm workbook 5 sheet, mã story liên kết từng issue, chuyển đổi nghiệp vụ và bảng đối chiếu controller/test. Công thức tổng kiểm tra được: 54 Product Backlog, 14 Sprint, 12 điểm đối chiếu đạt. Đã xem render cả 5 sheet, đọc lại file Excel xuất ra.\n\nKiểm tra chạy lại ngày 28/10/2026: dotnet test --no-build --no-restore 13/13; frontend node --test 11/11. Payment cash được chạy trong luồng test; transfer được xác nhận từ nhánh xử lý và lưu phương thức trong OrderService, chưa chạy giao dịch thật. Không thay đổi code hoặc dữ liệu nghiệp vụ của website.\n\nIssue #1–#3/milestone #1 đã ghi ĐÃ THAY THẾ, PR #4 ghi chú không dùng làm kế hoạch backlog mới.",
+    "number": 20,
+    "merged": true
+  }
+}
