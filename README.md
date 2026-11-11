@@ -2,7 +2,7 @@
 
 ## Mở bằng Visual Studio
 
-1. Mở `RestaurantMvc.sln` bằng Visual Studio 2026 (máy này có phiên bản 18.8).
+1. Mở `RestaurantMvc.sln` bằng Visual Studio 2026
 2. Trong Solution Explorer, nhấp phải project **RestaurantMvc** → **Set as Startup Project** nếu chưa được chọn.
 3. Chọn profile **RestaurantMvc**, nhấn **F5** (debug) hoặc **Ctrl+F5** (chạy không debug).
 4. Trình duyệt mở `http://localhost:5080`. Dừng debug bằng Shift+F5.
