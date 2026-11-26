@@ -66,6 +66,7 @@ public class ReservationService(RestaurantDb db)
             Rules.Require(actor.Role!="customer" || (int)r.userId==actor.Id,"Không có quyền xem đặt bàn này.",403);
             Rules.Require((string)r.status is "pending" or "confirmed","Đặt bàn đã hủy hoặc đã nhận bàn.",409);
             if(b.Status=="confirmed") Rules.Require((string)r.status=="pending" && (DateTime)r.endAt>=DateTime.UtcNow,"Không thể xác nhận lịch này.",409);
+            if(b.Status=="cancelled") Rules.Require((string)r.status=="pending","Đơn đặt bàn đã được nhà hàng xác nhận, không thể hủy.",409);
             return await db.One("UPDATE Reservations SET status=@Status,cancelReason=@reason OUTPUT inserted.* WHERE id=@id",new {id,b.Status,reason});
         });
     }
@@ -76,10 +77,10 @@ public class ReservationService(RestaurantDb db)
         var r=await db.One("SELECT * FROM Reservations WITH(UPDLOCK) WHERE id=@id",new {id});
         var existing=await db.One("SELECT * FROM DiningSessions WHERE reservationId=@id",new {id}); if(existing!=null) return existing;
         Rules.Require((string)r.status=="confirmed","Cần xác nhận đặt bàn trước khi nhận bàn.",409);
-        Rules.Require(DateTime.UtcNow>=((DateTime)r.startAt).AddMinutes(-30) && DateTime.UtcNow<(DateTime)r.endAt,"Chỉ nhận bàn từ 30 phút trước giờ đặt đến trước giờ kết thúc.",409);
+        Rules.Require(DateTime.UtcNow<(DateTime)r.endAt,"Lịch đặt bàn đã quá giờ kết thúc.",409);
         if(await db.One("SELECT id FROM DiningSessions WHERE tableId=@tableId AND closedAt IS NULL",new {tableId=(int)r.tableId})!=null) throw new BusinessException("Bàn đang có lượt phục vụ khác.",409);
         var s=await db.One("INSERT DiningSessions(tableId,reservationId,userId) OUTPUT inserted.* VALUES(@tableId,@id,@userId)",new {tableId=(int)r.tableId,id,userId=(int)r.userId});
-        await db.Query("UPDATE Reservations SET status='seated' WHERE id=@id",new {id}); return s;
+        await db.Query("UPDATE Reservations SET status='seated',startAt=CASE WHEN startAt>SYSUTCDATETIME() THEN SYSUTCDATETIME() ELSE startAt END,endAt=CASE WHEN startAt>SYSUTCDATETIME() THEN DATEADD(hour,2,SYSUTCDATETIME()) ELSE endAt END WHERE id=@id",new {id}); return s;
     });
 }
 

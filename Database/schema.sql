@@ -108,3 +108,9 @@ GO
 IF COL_LENGTH('dbo.Dishes', 'imageUrl') IS NULL
     ALTER TABLE dbo.Dishes ADD imageUrl NVARCHAR(2048) NULL;
 GO
+IF COL_LENGTH('dbo.Users', 'demoPassword') IS NULL
+    ALTER TABLE dbo.Users ADD demoPassword NVARCHAR(128) NULL;
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_Dishes_Visible_Category' AND object_id = OBJECT_ID('dbo.Dishes'))
+    CREATE INDEX IX_Dishes_Visible_Category ON dbo.Dishes(visible, categoryId, id);
+GO

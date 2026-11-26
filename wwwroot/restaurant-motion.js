@@ -1,7 +1,7 @@
 // Animate.css keyframes + native observers: no npm/build step or CDN at runtime.
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 const allowed = () => !preference.matches || document.documentElement.classList.contains('allow-banner-motion');
-const selector = '.hero-copy > *, .feast-hero .hero-art, .signature-card, .section-top, .benefits, .menu-toolbar, .dish, .table-invitation';
+const selector = '.hero-copy > *, .feast-hero .hero-art, .signature-card, .section-top, .benefits, .menu-toolbar, .dish, .table-invitation, .footer-intro, .footer-group, .session-banner';
 const seen = new WeakSet();
 const watched = new Set();
 const running = new Map();
@@ -97,7 +97,7 @@ new MutationObserver(records => {
 }).observe(dialog, { attributes: true, attributeFilter: ['open'], childList: true });
 
 document.addEventListener('pointerdown', event => {
-  const button = event.target.closest('.btn, .add-btn, .filters button, .motion-choice');
+  const button = event.target.closest('.btn, .add-btn, .filters button, .motion-choice, .nav-link');
   if (!button || button.disabled || !allowed() || event.button !== 0) return;
   const bounds = button.getBoundingClientRect();
   const ripple = document.createElement('span');

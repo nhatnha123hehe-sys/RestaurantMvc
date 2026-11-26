@@ -19,14 +19,15 @@ public class AccountService(RestaurantDb db)
         Rules.Require(Regex.IsMatch(username,@"^[a-zA-Z0-9_]{3,60}$"),"Tên đăng nhập gồm 3–60 chữ, số hoặc dấu gạch dưới.");
         var password=Rules.Text(b.Password,"Mật khẩu",128); Rules.Require(password.Length>=8,"Mật khẩu cần ít nhất 8 ký tự.");
         var name=Rules.Text(b.Name,"Họ tên"); var phone=Rules.Phone(b.Phone);
-        return await db.One("INSERT Users(username,passwordHash,name,phone,role) OUTPUT inserted.* VALUES(@username,@passwordHash,@name,@phone,'customer')",new {username,passwordHash=PasswordService.Hash(password),name,phone});
+        return await db.One("INSERT Users(username,passwordHash,demoPassword,name,phone,role) OUTPUT inserted.* VALUES(@username,@passwordHash,@demoPassword,@name,@phone,'customer')",new {username,passwordHash=PasswordService.Hash(password),demoPassword=password,name,phone});
     }
     public Task<dynamic> Find(int id) => db.One("SELECT id,username,name,phone,role FROM Users WHERE id=@id",new {id});
     public Task<List<dynamic>> Customers() => db.Query("""
-        SELECT u.id,u.username,u.name,u.phone,u.createdAt,
+        SELECT u.id,u.username,u.name,u.phone,u.role,COALESCE(u.demoPassword,'********') demoPassword,u.createdAt,
           (SELECT COUNT(*) FROM Reservations r WHERE r.userId=u.id) reservationCount,
           (SELECT COUNT(*) FROM Orders o WHERE o.userId=u.id) orderCount
-        FROM Users u WHERE u.role='customer' ORDER BY u.createdAt DESC,u.id DESC
+        FROM Users u
+        ORDER BY CASE u.role WHEN 'admin' THEN 1 WHEN 'staff' THEN 2 ELSE 3 END,u.id ASC
         """);
 }
 

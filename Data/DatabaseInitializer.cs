@@ -41,8 +41,33 @@ public static class DatabaseInitializer
             .Where(batch => !string.IsNullOrWhiteSpace(batch)))
             await db.Query(batch);
         await db.Atomic(async()=>{
-            foreach(var u in new[]{("admin","admin123","Quản lý Bếp Nhà","admin"),("nhanvien","nhanvien123","Nhân viên phục vụ","staff"),("khach","khach123","Khách trải nghiệm","customer")})
-                await db.Query("IF NOT EXISTS(SELECT 1 FROM Users WHERE username=@username) INSERT Users(username,passwordHash,name,phone,role) VALUES(@username,@hash,@name,'0901234567',@role)",new {username=u.Item1,hash=PasswordService.Hash(u.Item2),name=u.Item3,role=u.Item4});
+            var seedUsers=new (string Username,string Plain,string Name,string Phone,string Role)[]{
+                ("admin","admin123","Quản lý Bếp Nhà","0901000001","admin"),
+                ("nhanvien","nhanvien123","Nhân viên phục vụ","0902000001","staff"),
+                ("nv_minhan","minhan123","Trần Văn An","0902000002","staff"),
+                ("nv_thubinh","thubinh123","Nguyễn Thị Bình","0902000003","staff"),
+                ("nv_hoangcuong","cuong1234","Lê Hoàng Cường","0902000004","staff"),
+                ("nv_minhduc","minhduc123","Phạm Minh Đức","0902000005","staff"),
+                ("nv_thuha","thuha1234","Võ Thu Hà","0902000006","staff"),
+                ("khach","khach123","Khách trải nghiệm","0901234567","customer"),
+                ("kh_tuananh","khach123","Hoàng Tuấn Anh","0903000002","customer"),
+                ("kh_ngocmai","khach123","Đặng Ngọc Mai","0903000003","customer"),
+                ("kh_quockhanh","khach123","Bùi Quốc Khánh","0903000004","customer"),
+                ("kh_thanhvy","khach123","Lý Thanh Vy","0903000005","customer"),
+                ("kh_giahao","khach123","Ngô Gia Hào","0903000006","customer"),
+                ("kh_baotram","khach123","Đỗ Bảo Trâm","0903000007","customer"),
+                ("kh_hoangnam","khach123","Vũ Hoàng Nam","0903000008","customer"),
+                ("kh_kimngan","khach123","Phan Kim Ngân","0903000009","customer"),
+                ("kh_minhkhoi","khach123","Trịnh Minh Khôi","0903000010","customer")
+            };
+            foreach(var u in seedUsers)
+            {
+                var existing=await db.One("SELECT id, demoPassword FROM Users WHERE username=@username",new {username=u.Username});
+                if(existing is null)
+                    await db.Query("INSERT Users(username,passwordHash,demoPassword,name,phone,role) VALUES(@username,@hash,@plain,@name,@phone,@role)",new {username=u.Username,hash=PasswordService.Hash(u.Plain),plain=u.Plain,name=u.Name,phone=u.Phone,role=u.Role});
+                else if(string.IsNullOrEmpty((string?)existing.demoPassword))
+                    await db.Query("UPDATE Users SET demoPassword=@plain WHERE username=@username AND (demoPassword IS NULL OR demoPassword='')",new {username=u.Username,plain=u.Plain});
+            }
             if(await db.One("SELECT TOP 1 id FROM Categories")==null)
                 foreach(var category in new[]{"Món chính","Khai vị","Đồ uống","Tráng miệng"}) await db.Query("INSERT Categories(name) VALUES(@category)",new {category});
             // Seed bổ sung theo tên để các database đã chạy trước đây cũng nhận được món mới.

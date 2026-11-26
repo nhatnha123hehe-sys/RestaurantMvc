@@ -122,8 +122,12 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
         await Expect(other,$"/reservations/{rid}","PATCH",new {status="cancelled",reason="Không có quyền"},403);
         await Expect(staff,$"/reservations/{rid}/seat","POST",status:409);
         await Expect(staff,$"/reservations/{rid}","PATCH",new {status="confirmed"});
-        await Expect(staff,$"/reservations/{rid}/seat","POST",status:409);
-        await fixture.Sql("UPDATE Reservations SET startAt=DATEADD(minute,-1,SYSUTCDATETIME()),endAt=DATEADD(hour,2,SYSUTCDATETIME()) WHERE id=@rid",new {rid});
+        var cancelConfirmedCustomer=await Expect(c,$"/reservations/{rid}","PATCH",new {status="cancelled",reason="Khách đổi ý"},409);
+        Assert.Equal("Đơn đặt bàn đã được nhà hàng xác nhận, không thể hủy.",cancelConfirmedCustomer["error"]!.GetValue<string>());
+        var cancelConfirmedStaff=await Expect(staff,$"/reservations/{rid}","PATCH",new {status="cancelled",reason="Nhân viên hủy"},409);
+        Assert.Equal("Đơn đặt bàn đã được nhà hàng xác nhận, không thể hủy.",cancelConfirmedStaff["error"]!.GetValue<string>());
+        var cancelable=await Expect(c,"/reservations","POST",Booking(start.AddHours(3)),201);
+        await Expect(c,$"/reservations/{Id(cancelable)}","PATCH",new {status="cancelled",reason="Hủy khi còn chờ xác nhận"});
         var seated=await Task.WhenAll(Expect(staff,$"/reservations/{rid}/seat","POST"),Expect(staff,$"/reservations/{rid}/seat","POST"));
         int sid=Id(seated[0]); Assert.Equal(sid,Id(seated[1]));
         Assert.Contains((await Expect(c,query)).AsArray(),t=>Id(t!)==tableId);
@@ -207,5 +211,40 @@ public class ApiTests(RestaurantFixture fixture,ITestOutputHelper output) : ICla
             await DatabaseInitializer.Initialize(scope.ServiceProvider,root);
             Assert.NotNull((await Expect(admin,$"/menu/{id}"))["recipe"]);
         } finally {await fixture.Sql("DELETE DishRecipes WHERE dishId=@id; UPDATE Dishes SET visible=1 WHERE id=@id",new {id});}
+    }
+
+    [Fact] public async Task Customers_endpoint_is_admin_only_lists_all_roles_with_demo_password_and_order()
+    {
+        using var guest=fixture.Client();
+        using var customer=await Login("khach","khach123");
+        using var staff=await Login("nhanvien","nhanvien123");
+        using var admin=await Login("admin","admin123");
+        await Expect(guest,"/customers",status:401);
+        await Expect(customer,"/customers",status:403);
+        await Expect(staff,"/customers",status:403);
+
+        var regUsername="reg_"+Guid.NewGuid().ToString("N")[..10];
+        using var regClient=fixture.Client();
+        var regResp=await Expect(regClient,"/auth/register","POST",new {username=regUsername,password="secret1234",name="Khách mới",phone="0908888888"},201);
+        Assert.Null(regResp["demoPassword"]);
+        Assert.Null((await Expect(regClient,"/auth/me"))["demoPassword"]);
+
+        try {
+            var list=(await Expect(admin,"/customers")).AsArray().Select(x=>x!).ToList();
+            Assert.Equal(1,list.Count(x=>x["role"]!.GetValue<string>()=="admin"));
+            Assert.Equal(6,list.Count(x=>x["role"]!.GetValue<string>()=="staff"));
+            Assert.True(list.Count(x=>x["role"]!.GetValue<string>()=="customer")>=11);
+
+            var roles=list.Select(x=>x["role"]!.GetValue<string>() switch {"admin"=>1,"staff"=>2,_=>3}).ToList();
+            Assert.Equal(roles.OrderBy(r=>r).ToList(),roles);
+
+            var regItem=list.Single(x=>x["username"]!.GetValue<string>()==regUsername);
+            Assert.Equal("secret1234",regItem["demoPassword"]!.GetValue<string>());
+            Assert.Equal("admin123",list.Single(x=>x["username"]!.GetValue<string>()=="admin")["demoPassword"]!.GetValue<string>());
+            Assert.Equal("thuha1234",list.Single(x=>x["username"]!.GetValue<string>()=="nv_thuha")["demoPassword"]!.GetValue<string>());
+            Assert.Equal("khach123",list.Single(x=>x["username"]!.GetValue<string>()=="kh_minhkhoi")["demoPassword"]!.GetValue<string>());
+        } finally {
+            await fixture.Sql("DELETE Users WHERE username=@regUsername",new {regUsername});
+        }
     }
 }
